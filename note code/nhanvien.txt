@@ -1,0 +1,83 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Dao;
+
+/**
+ *
+ * @author phuch
+ */
+import Connection.*;
+import Model.NhanVien;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class NhanVienDao {
+    public static NhanVien getUser(String user, String password) {
+        try {
+            Connection con = testJDBCUtil.login("database_doan_NPNT", "password");
+            String sql = "select * from NhanVien where TaiKhoan=? and MatKhau = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                LocalDate NgaySinh = rs.getObject("NgaySinh", LocalDate.class);
+                return new NhanVien(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        NgaySinh,
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getDouble(10)
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public static ArrayList<NhanVien> getDSNhanVien() {
+        ArrayList<NhanVien> DS_NV = new ArrayList<>();
+        String sql = "SELECT * FROM NHANVIEN";
+        try {
+            Connection con = null;
+            con = JDBCUtil.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 LocalDate NgaySinh = rs.getObject("NgaySinh", LocalDate.class);
+                DS_NV.add(new NhanVien(
+                        rs.getString("MaNV"),
+                        rs.getString("TenNV"),
+                        rs.getString("CCCD"),
+                        NgaySinh,
+                        rs.getString("GioiTinh"),
+                        rs.getString("DiaChi"),
+                        rs.getString("LoaiNV"),
+                        rs.getString("TaiKHoan"),
+                        rs.getString("MatKhau"),
+                        rs.getDouble("LuongCB")
+                ));
+
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return DS_NV;
+    }
+}
