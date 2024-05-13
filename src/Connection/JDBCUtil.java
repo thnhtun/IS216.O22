@@ -23,7 +23,7 @@ public class JDBCUtil {
 
             // Thông số kết nối
             // SID: ORCL
-            String url = "jdbc:oracle:thin:@localhost:1521/ORCL";
+            String url = "jdbc:oracle:thin:@localhost:1521/orcl";
             String user = "database_doan_NPNT";
             String pass = "password";
 
