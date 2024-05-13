@@ -4,7 +4,6 @@ package qlks.model;
 
 public class Phong {
      private String MaPhong;
-    private int DienTich; 
     private String MaLoaiPhong; 
     private String MaKieuPhong;
 
@@ -14,14 +13,6 @@ public class Phong {
 
     public void setMaPhong(String MaPhong) {
         this.MaPhong = MaPhong;
-    }
-
-    public int getDienTich() {
-        return DienTich;
-    }
-
-    public void setDienTich(int DienTich) {
-        this.DienTich = DienTich;
     }
 
     public String getMaLoaiPhong() {
@@ -39,5 +30,7 @@ public class Phong {
     public void setMaKieuPhong(String MaKieuPhong) {
         this.MaKieuPhong = MaKieuPhong;
     }
-    
+
+   
+   
 }

@@ -4,7 +4,8 @@ package qlks.model;
 public class TrangBi {
      private String MaTB; 
     private String TenTB; 
-    private double GiaTB; 
+    private double GiaTB;
+    private int SoLuong;
 
     public String getMaTB() {
         return MaTB;
@@ -12,6 +13,14 @@ public class TrangBi {
 
     public void setMaTB(String MaTB) {
         this.MaTB = MaTB;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
     }
 
     public String getTenTB() {

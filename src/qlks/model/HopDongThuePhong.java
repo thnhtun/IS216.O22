@@ -4,7 +4,7 @@ package qlks.model;
 import java.time.LocalDateTime;
 
 
-public class HopDong {
+public class HopDongThuePhong {
     private String MaHopDong;
     private String MaKH;  
     private LocalDateTime NgayDatPhong;

@@ -18,7 +18,7 @@ public class KhachHang {
     private String GioiTinh;
     private String DiaChi;
     private String SDT;
-    private String HangThanhVien;
+    private int SoHopDong;
 
     public String getMaKH() {
         return MaKH;
@@ -76,12 +76,12 @@ public class KhachHang {
         this.SDT = SDT;
     }
 
-    public String getHangThanhVien() {
-        return HangThanhVien;
+    public int getSoHopDong() {
+        return SoHopDong;
     }
 
-    public void setHangThanhVien(String HangThanhVien) {
-        this.HangThanhVien = HangThanhVien;
+    public void setSoHopDOng(int SoHopDOng) {
+        this.SoHopDong = SoHopDong;
     }
 
    
