@@ -33,6 +33,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="MenuPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -59,14 +60,12 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="ChamCongButton" pref="130" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="HoaDonButton" max="32767" attributes="0"/>
-                          <Component id="TrangBiButton" max="32767" attributes="0"/>
-                          <Component id="HopDongButton" max="32767" attributes="0"/>
-                          <Component id="KhachHangButton" pref="130" max="32767" attributes="0"/>
-                          <Component id="NhanVienButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="KhuyenMaiButton" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="HoaDonButton" max="32767" attributes="0"/>
+                      <Component id="TrangBiButton" max="32767" attributes="0"/>
+                      <Component id="HopDongButton" max="32767" attributes="0"/>
+                      <Component id="KhachHangButton" pref="130" max="32767" attributes="0"/>
+                      <Component id="NhanVienButton" alignment="0" max="32767" attributes="0"/>
+                      <Component id="KhuyenMaiButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
@@ -89,7 +88,7 @@
                   <Component id="HoaDonButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ChamCongButton" min="-2" pref="48" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,7 +108,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="KhachHangButtonMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KhachHangButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="HopDongButton">
@@ -183,9 +181,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace pref="92" max="32767" attributes="0"/>
                   <Component id="Logout" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -198,11 +196,11 @@
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="Logout" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="911" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
