@@ -85,7 +85,6 @@ private static NhanVienModel currentUser;
         jPanelKhachhang.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelKhachhang.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Khách hàng ");
 
         javax.swing.GroupLayout jPanelKhachhangLayout = new javax.swing.GroupLayout(jPanelKhachhang);
@@ -100,7 +99,7 @@ private static NhanVienModel currentUser;
         jPanelKhachhangLayout.setVerticalGroup(
             jPanelKhachhangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKhachhangLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -109,7 +108,6 @@ private static NhanVienModel currentUser;
         jPanelNhanvien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelNhanvien.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        NhanVien.setForeground(new java.awt.Color(0, 0, 0));
         NhanVien.setText("Nhân viên ");
 
         javax.swing.GroupLayout jPanelNhanvienLayout = new javax.swing.GroupLayout(jPanelNhanvien);
@@ -126,14 +124,13 @@ private static NhanVienModel currentUser;
             .addGroup(jPanelNhanvienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(NhanVien)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanelHopdong.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHopdong.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelHopdong.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Hợp đồng ");
 
         javax.swing.GroupLayout jPanelHopdongLayout = new javax.swing.GroupLayout(jPanelHopdong);
@@ -143,21 +140,20 @@ private static NhanVienModel currentUser;
             .addGroup(jPanelHopdongLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel3)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanelHopdongLayout.setVerticalGroup(
             jPanelHopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHopdongLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabelKhuyenmai.setForeground(new java.awt.Color(0, 0, 0));
         jLabelKhuyenmai.setText("Khuyến mãi ");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -172,7 +168,7 @@ private static NhanVienModel currentUser;
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabelKhuyenmai)
                 .addContainerGap())
         );
@@ -181,7 +177,6 @@ private static NhanVienModel currentUser;
         jPanelTrangbi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelTrangbi.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Trang bị ");
 
         javax.swing.GroupLayout jPanelTrangbiLayout = new javax.swing.GroupLayout(jPanelTrangbi);
@@ -198,14 +193,13 @@ private static NhanVienModel currentUser;
             .addGroup(jPanelTrangbiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanelChamcong.setBackground(new java.awt.Color(255, 255, 255));
         jPanelChamcong.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelChamcong.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Chấm công");
 
         javax.swing.GroupLayout jPanelChamcongLayout = new javax.swing.GroupLayout(jPanelChamcong);
@@ -222,14 +216,13 @@ private static NhanVienModel currentUser;
             .addGroup(jPanelChamcongLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanelHoadon.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHoadon.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelHoadon.setPreferredSize(new java.awt.Dimension(130, 38));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Hóa đơn ");
 
         javax.swing.GroupLayout jPanelHoadonLayout = new javax.swing.GroupLayout(jPanelHoadon);
@@ -244,7 +237,7 @@ private static NhanVienModel currentUser;
         jPanelHoadonLayout.setVerticalGroup(
             jPanelHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHoadonLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -291,7 +284,6 @@ private static NhanVienModel currentUser;
         jLabel8.setText("Khách hàng ");
 
         Logout.setBackground(new java.awt.Color(153, 153, 255));
-        Logout.setForeground(new java.awt.Color(0, 0, 0));
         Logout.setText("Đăng xuất ");
         Logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,18 +309,14 @@ private static NhanVienModel currentUser;
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tìm kiếm theo");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nhập thông tin");
 
         traCuuJBut.setBackground(new java.awt.Color(153, 153, 255));
-        traCuuJBut.setForeground(new java.awt.Color(0, 0, 0));
         traCuuJBut.setText("Tra cứu");
 
         themjButton.setBackground(new java.awt.Color(153, 153, 255));
-        themjButton.setForeground(new java.awt.Color(0, 0, 0));
         themjButton.setText("Thêm");
         themjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,7 +325,6 @@ private static NhanVienModel currentUser;
         });
 
         xoajButton.setBackground(new java.awt.Color(153, 204, 255));
-        xoajButton.setForeground(new java.awt.Color(0, 0, 0));
         xoajButton.setText("Xóa");
         xoajButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +333,6 @@ private static NhanVienModel currentUser;
         });
 
         suajButton.setBackground(new java.awt.Color(153, 204, 255));
-        suajButton.setForeground(new java.awt.Color(0, 0, 0));
         suajButton.setText("Sửa");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -398,9 +384,9 @@ private static NhanVienModel currentUser;
                         .addGap(24, 24, 24)
                         .addComponent(Logout)))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
