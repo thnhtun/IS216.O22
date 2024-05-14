@@ -3,22 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
-import Connection.*;
+import DAO.NhanVienDAO;
 import javax.swing.JOptionPane;
-import Model.NhanVien;
+import Model.NhanVienModel;
 import java.awt.event.KeyEvent;
-import Dao.NhanVienDao;
 
 /**
  *
  * @author phuch
  */
-public class DangNhap extends javax.swing.JDialog {
-         NhanVien user;
+public class DangNhapFrame extends javax.swing.JDialog {
+         NhanVienModel user;
     /**
      * Creates new form Login
+     * @param parent
+     * @param modal
      */
-    public DangNhap(java.awt.Frame parent, boolean modal) {
+    public DangNhapFrame(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -182,14 +183,14 @@ public class DangNhap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }else {
 
-            user = NhanVienDao.getUser(EnterAccount_JTextField.getText(), jPasswordField1.getText());
+            user = NhanVienDAO.getUser(EnterAccount_JTextField.getText(), jPasswordField1.getText());
 
             if (user != null) {
                 //JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Thông báo", JOptionPane.PLAIN_MESSAGE);
                 hide();
 
-                HomePageEmp.main(user);
+                HomePageEmpFrame.main(user);
             } else {
                 JOptionPane.showMessageDialog(this, "Sai tên đăng nhập hoặc mật khẩu", "Thông báo", JOptionPane.ERROR_MESSAGE);
             }
@@ -201,14 +202,12 @@ public class DangNhap extends javax.swing.JDialog {
 
     }//GEN-LAST:event_KhachButtonActionPerformed
      public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DangNhap dialog =new DangNhap(null,true);
-               dialog.setTitle("Đăng nhập hệ thống ");
-               dialog.setResizable(false);
-               dialog.setLocationRelativeTo(null);
-               dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            DangNhapFrame dialog =new DangNhapFrame(null,true);
+            dialog.setTitle("Đăng nhập hệ thống ");
+            dialog.setResizable(false);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
         });
     }
 

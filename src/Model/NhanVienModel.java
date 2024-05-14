@@ -4,7 +4,7 @@ package Model;
 import java.time.LocalDate;
 
 
-public class NhanVien {
+public class NhanVienModel {
     private String MaNV;
     private String TenNV;
     private String CCCD;
@@ -16,10 +16,10 @@ public class NhanVien {
     private String MatKhau;
     private double LuongCB;
     
-    public NhanVien(){
+    public NhanVienModel(){
     }
     
-    public NhanVien(String MaNV, String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, 
+    public NhanVienModel(String MaNV, String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, 
                     String LoaiNV, String TaiKhoan, String MatKhau, double LuongCB){
         this.MaNV = MaNV;
         this.TenNV = TenNV;

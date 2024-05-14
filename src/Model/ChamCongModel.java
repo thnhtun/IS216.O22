@@ -1,27 +1,27 @@
 package Model;
 
-public class ChamCong {
+public class ChamCongModel {
 
     private String MaCC;
     private String MaNV;
     private int SGLT;
     private int SNDL;
 
-    public ChamCong() {
+    public ChamCongModel() {
     }
 
-    public ChamCong(String MaCC, String MaNV, int SGLT, int SNDL) {
+    public ChamCongModel(String MaCC, String MaNV, int SGLT, int SNDL) {
         this.MaCC = MaCC;
         this.MaNV = MaNV;
         this.SGLT = SGLT;
         this.SNDL = SNDL;
     }
 
-    public ChamCong(int SGLT) {
+    public ChamCongModel(int SGLT) {
         this.SGLT = SGLT;
     }
 
-    public ChamCong(String maCC) {
+    public ChamCongModel(String maCC) {
         this.MaCC = maCC;
     }
 

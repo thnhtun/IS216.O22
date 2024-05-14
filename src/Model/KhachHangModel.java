@@ -3,7 +3,7 @@ package Model;
 
 import java.time.LocalDate;
 
-public class KhachHang {
+public class KhachHangModel {
     private String MaKH;
     private String TenKH;
     private String CCCD;
@@ -13,11 +13,11 @@ public class KhachHang {
     private String SDT;
     private int SoHopDong;
     
-    public KhachHang(){
+    public KhachHangModel(){
         
     }
     
-    public KhachHang(String MaKH, String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, int SoHopDong){
+    public KhachHangModel(String MaKH, String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, int SoHopDong){
         this.MaKH = MaKH;
         this.TenKH = TenKH;
         this.CCCD = CCCD;

@@ -2,16 +2,16 @@
 package Model;
 
 
-public class Phong {
+public class PhongModel {
     private String MaPhong;
     private String LoaiPhong; 
     private String KieuPhong;
     
-    public Phong(){
+    public PhongModel(){
         
     }
     
-    public Phong(String MaPhong, String LoaiPhong, String KieuPhong){
+    public PhongModel(String MaPhong, String LoaiPhong, String KieuPhong){
         this.MaPhong = MaPhong;
         this.LoaiPhong = LoaiPhong;
         this.KieuPhong = KieuPhong;

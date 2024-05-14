@@ -2,15 +2,15 @@
 package Model;
 
 
-public class HinhThucThue {
+public class HinhThucThueModel {
     private String MaHT;
     private String TenHT;
 
-    public HinhThucThue(){
+    public HinhThucThueModel(){
         
     }
     
-    public HinhThucThue(String MaHT, String TenHT){
+    public HinhThucThueModel(String MaHT, String TenHT){
         this.MaHT = MaHT;
         this.TenHT = TenHT;
     }

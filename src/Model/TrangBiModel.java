@@ -1,17 +1,17 @@
 
 package Model;
 
-public class TrangBi {
+public class TrangBiModel {
     private String MaTB; 
     private String TenTB; 
     private double GiaTB;
     private int SoLuong;
 
-    public TrangBi(){
+    public TrangBiModel(){
         
     }
     
-    public TrangBi(String MaTB, String TenTB, double GiaTB, int SoLuong){
+    public TrangBiModel(String MaTB, String TenTB, double GiaTB, int SoLuong){
         this.MaTB = MaTB;
         this.TenTB = TenTB;
         this.GiaTB = GiaTB;

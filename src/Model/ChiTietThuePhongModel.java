@@ -1,16 +1,16 @@
 
 package Model;
 
-public class ChiTietThuePhong {
+public class ChiTietThuePhongModel {
     private String MaHopDong;
     private String MaHT;
     private String MaPhong;
     private double Gia;
     
-    public ChiTietThuePhong(){
+    public ChiTietThuePhongModel(){
     }
     
-    public ChiTietThuePhong(String MaHopDong, String MaHT, String MaPhong, double Gia){
+    public ChiTietThuePhongModel(String MaHopDong, String MaHT, String MaPhong, double Gia){
         this.MaHopDong = MaHopDong;
         this.MaHT = MaHT;
         this.MaPhong = MaPhong;

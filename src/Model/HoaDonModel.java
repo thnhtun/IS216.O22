@@ -4,18 +4,18 @@ package Model;
 import java.time.LocalDate;
 
 
-public class HoaDon {
+public class HoaDonModel {
     private String MaHD;  
     private String MaHopDong;
     private String MaKM;
     private LocalDate NgayLapHD;
     private double TongTien; 
     
-    public HoaDon(){
+    public HoaDonModel(){
         
     }
     
-    public HoaDon(String MaHD, String MaHopDong, String MaKM, LocalDate NgayLapHD, double TongTien){
+    public HoaDonModel(String MaHD, String MaHopDong, String MaKM, LocalDate NgayLapHD, double TongTien){
         this.MaHD = MaHD;
         this.MaHopDong = MaHopDong;
         this.MaKM = MaKM;

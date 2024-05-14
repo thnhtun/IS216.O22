@@ -4,10 +4,10 @@
  */
 package main;
 
-import View.DangNhap;
+import View.DangNhapFrame;
 public class Main {
      public static void main(String[] args) {
-         DangNhap dialog =new DangNhap(null,true);
+         DangNhapFrame dialog =new DangNhapFrame(null,true);
          dialog.setTitle("Đăng nhập hệ thống ");
          dialog.setResizable(false);
          dialog.setLocationRelativeTo(null);

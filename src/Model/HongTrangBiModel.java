@@ -1,16 +1,16 @@
 
 package Model;
 
-public class HongTrangBi {
+public class HongTrangBiModel {
     private String MaTB;
     private String MaHD;
     private int SoLuongHong;
     
-    public HongTrangBi(){
+    public HongTrangBiModel(){
         
     }
     
-    public HongTrangBi(String MaTB, String MaHD, int SoLuongHong){
+    public HongTrangBiModel(String MaTB, String MaHD, int SoLuongHong){
         this.MaTB = MaTB;
         this.MaHD = MaHD;
         this.SoLuongHong = SoLuongHong;

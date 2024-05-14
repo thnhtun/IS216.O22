@@ -4,7 +4,7 @@ package Model;
 import java.time.LocalDate;
 
 
-public class KhuyenMai {
+public class KhuyenMaiModel {
     private String MaKM;
     private String TenKM; 
     private String MoTaKM; 
@@ -12,11 +12,11 @@ public class KhuyenMai {
     private LocalDate NgayKetThuc;
     private double PhanTramKM; 
     
-    public KhuyenMai(){
+    public KhuyenMaiModel(){
         
     }
     
-    public KhuyenMai(String MaKM, String TenKM, String MoTaKM, LocalDate NgayBatDau, LocalDate NgayKetThuc, double PhanTramKM){
+    public KhuyenMaiModel(String MaKM, String TenKM, String MoTaKM, LocalDate NgayBatDau, LocalDate NgayKetThuc, double PhanTramKM){
         this.MaKM = MaKM;
         this.TenKM = TenKM;
         this.MoTaKM = MoTaKM;

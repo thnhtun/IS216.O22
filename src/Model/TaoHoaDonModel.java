@@ -1,15 +1,15 @@
 
 package Model;
 
-public class TaoHoaDon {
+public class TaoHoaDonModel {
     private String MaHD;
     private String MaNV;
     
-    public TaoHoaDon(){
+    public TaoHoaDonModel(){
         
     }
     
-    public TaoHoaDon(String MaHD, String MaNV){
+    public TaoHoaDonModel(String MaHD, String MaNV){
         this.MaHD = MaHD;
         this.MaNV = MaNV;
     }

@@ -154,8 +154,28 @@ ADD CONSTRAINT FK_CHAMCONG_NHANVIEN FOREIGN KEY (MaNV) REFERENCES NHANVIEN(MaNV)
 
 -- INSERT DỮ LIỆU
 -- insert bảng khách hàng
-
-
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0001', 'Nguyễn Văn An', '012345678901', TO_DATE('1999-01-01', 'YYYY-MM-DD'), 'Nam', '123 Lê Lợi, Hà Nội', '0912345678', 2);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0002', 'Trần Thị Bình', '012345678902', TO_DATE('1995-02-15', 'YYYY-MM-DD'), 'Nữ', '456 Trần Hưng Đạo, Đà Nẵng', '0912345679', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0003', 'Lê Mạnh Cường', '012345678903', TO_DATE('1998-03-20', 'YYYY-MM-DD'), 'Nam', '789 Nguyễn Trãi, Hồ Chí Minh', '0912345680', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0004', 'Phạm Thị Diệu', '012345678904', TO_DATE('1995-04-25', 'YYYY-MM-DD'), 'Nữ', '321 Phan Chu Trinh, Cần Thơ', '0912345681', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0005', 'Hoàng Văn Huy', '012345678905', TO_DATE('2000-05-30', 'YYYY-MM-DD'), 'Nam', '654 Hai Bà Trưng, Huế', '0912345682', 2);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0006', 'Vũ Thị Linh', '012345678906', TO_DATE('1997-06-10', 'YYYY-MM-DD'), 'Nữ', '987 Lê Thánh Tông, Hạ Long', '0912345683', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0007', 'Đặng Văn Lâm', '012345678907', TO_DATE('1993-07-15', 'YYYY-MM-DD'), 'Nam', '123 Võ Nguyên Giáp, Nha Trang', '0912345684', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0008', 'Bùi Thị Hiền', '012345678908', TO_DATE('1991-08-20', 'YYYY-MM-DD'), 'Nữ', '456 Lê Hồng Phong, Đà Lạt', '0912345685', 1);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0009', 'Ngô Trần Văn Trung', '012345678909', TO_DATE('2002-09-25', 'YYYY-MM-DD'), 'Nam', '789 Trần Phú, Hải Phòng', '0912345686', 3);
+INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES
+('KH0010', 'Đỗ Nguyễn Ngọc Nữ', '012345678910', TO_DATE('1989-10-30', 'YYYY-MM-DD'), 'Nữ', '321 Nguyễn Huệ, Vũng Tàu', '0912345687', 2);
+COMMIT;
+SELECT * FROM KHACHHANG;
 
 ------------------------------- NHÂN VIÊN ------------------------------------
 -- Thêm nhà nhân viên 
