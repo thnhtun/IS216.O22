@@ -5,6 +5,7 @@ import DAO.KhachHangDAO;
 import DAO.TrangChuDAO;
 import Model.KhachHangModel;
 import Model.NhanVienModel;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,61 +18,10 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
      
-        inDanhSach();
     }
 
 
-    public void inDanhSach(){
-        // Tạo đối tượng danh sách khách hàng
-        ArrayList<KhachHangModel> DS_KH = KhachHangDAO.getDSKhachHang();
-        
-        DefaultTableModel defaultTableModel = new DefaultTableModel(){
-            public boolean isCellEdittable(int row, int column){
-                return super.isCellEditable(row, column);
-            }
-        };
-        
-        danhSachKHTable.setModel(defaultTableModel);
-        
-        defaultTableModel.addColumn("Mã KH");
-        defaultTableModel.addColumn("Họ tên");
-        defaultTableModel.addColumn("CCCD");
-        defaultTableModel.addColumn("Ngày sinh");
-        defaultTableModel.addColumn("Giới tính");
-        defaultTableModel.addColumn("Địa chỉ");
-        defaultTableModel.addColumn("SĐT");
-        defaultTableModel.addColumn("SHĐ");
-        
-        for (KhachHangModel khachHang : DS_KH) {
-                defaultTableModel.addRow(new Object[]{khachHang.getMaKH(), khachHang.getCCCD(), khachHang.getTenKH(),
-                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
-                khachHang.getSDT(), khachHang.getSoHopDong()
-            });
-        }       
-               
-    }
-    
-    public void TraCuuKH() {
-        DefaultTableModel tblKH_Model = (DefaultTableModel) this.danhSachKHTable.getModel();
-        
-        String option = (String) this.timTheoComboBox.getSelectedItem();
-        String input = this.nhapjTextField.getText();
-        
-        tblKH_Model.setRowCount(0);       
-        
-        ArrayList<KhachHangModel> DS_KH = new ArrayList<KhachHangModel>();
-        DS_KH = KhachHangDAO.TimKH(option, input);
-        
-        for (KhachHangModel khachHang : DS_KH) {
-            tblKH_Model.addRow(new Object[]{khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getCCCD(),
-                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
-                khachHang.getSDT(), khachHang.getSoHopDong()
-            });
-        }
-        if (DS_KH.size() <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Thông tin không tồn tại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+   
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -89,6 +39,23 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         Logout = new javax.swing.JButton();
+        maKHjTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        hoTenjTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        CCCDjTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        gioiTinhjComboBox = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        diaChijTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        SDTjTextField = new javax.swing.JTextField();
+        themjButton = new javax.swing.JButton();
+        huyjButton = new javax.swing.JButton();
+        ngaySinhjComboBox = new de.wannawork.jcalendar.JCalendarComboBox();
 
         jButton2.setText("jButton2");
 
@@ -199,18 +166,95 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Nhập Thông tin");
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Mã KH");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Họ tên");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("CCCD");
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Giới tính");
+
+        gioiTinhjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Ngày sinh");
+
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Địa chỉ");
+
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Số điện thoại");
+
+        themjButton.setBackground(new java.awt.Color(153, 153, 255));
+        themjButton.setText("Thêm");
+        themjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themjButtonActionPerformed(evt);
+            }
+        });
+
+        huyjButton.setBackground(new java.awt.Color(153, 153, 255));
+        huyjButton.setText("Hủy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(610, Short.MAX_VALUE)
-                .addComponent(Logout)
-                .addGap(36, 36, 36))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(Logout)
+                                .addGap(36, 36, 36))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(themjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(huyjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(244, 244, 244)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(SDTjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maKHjTextField)
+                                                .addComponent(jLabel5)
+                                                .addComponent(gioiTinhjComboBox, 0, 120, Short.MAX_VALUE))
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(hoTenjTextField)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(ngaySinhjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CCCDjTextField)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(diaChijTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
+                .addGap(66, 66, 66))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +263,37 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
                 .addComponent(Logout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maKHjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoTenjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CCCDjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gioiTinhjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diaChijTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ngaySinhjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SDTjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(themjButton)
+                    .addComponent(huyjButton))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -267,6 +341,36 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_NhanVienButtonMouseClicked
 
+    private void themjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themjButtonActionPerformed
+        // TODO add your handling code here:
+        String maKH = this.maKHjTextField.getText();
+        String hoTen = this.hoTenjTextField.getText();
+        String cccd = this.CCCDjTextField.getText();
+        java.sql.Date sqldate = new java.sql.Date(this.ngaySinhjComboBox.getDate().getTime());
+        String gioiTinh = (String) this.gioiTinhjComboBox.getSelectedItem();
+        String diaChi = this.diaChijTextField.getText();
+        String sdt = this.SDTjTextField.getText();
+        KhachHangModel KH = new KhachHangModel(maKH, hoTen, cccd, sqldate.toLocalDate(),  gioiTinh, diaChi, sdt, 0);
+        KhachHangDAO khDAO = new KhachHangDAO();
+        try {
+            if (khDAO.ThemKH(KH)) {
+                JOptionPane.showMessageDialog(rootPane, "Thêm thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+                dispose();
+                KhachHangFrame.main(currentUser);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Thêm không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+        this.maKHjTextField.setText("");
+        this.hoTenjTextField.setText("");
+        this.CCCDjTextField.setText("");
+        this.diaChijTextField.setText("");
+        this.SDTjTextField.setText("");
+        this.ngaySinhjComboBox.setCalendar(null);
+    }//GEN-LAST:event_themjButtonActionPerformed
+
 
     public static void main(NhanVienModel args) {
         currentUser = args;
@@ -283,17 +387,14 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomePageEmpFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new ThemKhachHangFrame().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CCCDjTextField;
     private javax.swing.JButton ChamCongButton;
     private javax.swing.JButton HoaDonButton;
     private javax.swing.JButton HopDongButton;
@@ -302,10 +403,26 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
     private javax.swing.JButton Logout;
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JButton NhanVienButton;
+    private javax.swing.JTextField SDTjTextField;
     private javax.swing.JButton TrangBiButton;
+    private javax.swing.JTextField diaChijTextField;
+    private javax.swing.JComboBox<String> gioiTinhjComboBox;
+    private javax.swing.JTextField hoTenjTextField;
+    private javax.swing.JButton huyjButton;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField maKHjTextField;
+    private de.wannawork.jcalendar.JCalendarComboBox ngaySinhjComboBox;
+    private javax.swing.JButton themjButton;
     // End of variables declaration//GEN-END:variables
 
 }
