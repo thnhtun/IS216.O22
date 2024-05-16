@@ -12,13 +12,14 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-/**
- *
- * @author phuch
- */
+
+
+
+
+
 public class TrangChuDAO {
   public static int KTLoaiNV(String maUser) {
-        System.out.println(maUser);
+        // System.out.println(maUser);
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "Select LoaiNV from NhanVien  where MaNV=? ";
@@ -26,7 +27,7 @@ public class TrangChuDAO {
             ps.setString(1, maUser);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println(rs.getString("LoaiNV"));
+                // System.out.println(rs.getString("LoaiNV"));
                 switch (rs.getString("LoaiNV")) {
                     case "Quản lý" -> {
                         return 1;

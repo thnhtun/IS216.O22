@@ -1,28 +1,78 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
 
-//import Dao.TrangChuDao;
+import DAO.KhachHangDAO;
 import DAO.TrangChuDAO;
+import Model.KhachHangModel;
 import Model.NhanVienModel;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author phuch
- */
-public class HomePageEmpFrame extends javax.swing.JFrame {
-private static NhanVienModel currentUser;
 
-    public HomePageEmpFrame() {
+public class ThemKhachHangFrame extends javax.swing.JFrame {
+    private static NhanVienModel currentUser;
+
+    public ThemKhachHangFrame() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
      
+        inDanhSach();
     }
 
 
+    public void inDanhSach(){
+        // Tạo đối tượng danh sách khách hàng
+        ArrayList<KhachHangModel> DS_KH = KhachHangDAO.getDSKhachHang();
+        
+        DefaultTableModel defaultTableModel = new DefaultTableModel(){
+            public boolean isCellEdittable(int row, int column){
+                return super.isCellEditable(row, column);
+            }
+        };
+        
+        danhSachKHTable.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("Mã KH");
+        defaultTableModel.addColumn("Họ tên");
+        defaultTableModel.addColumn("CCCD");
+        defaultTableModel.addColumn("Ngày sinh");
+        defaultTableModel.addColumn("Giới tính");
+        defaultTableModel.addColumn("Địa chỉ");
+        defaultTableModel.addColumn("SĐT");
+        defaultTableModel.addColumn("SHĐ");
+        
+        for (KhachHangModel khachHang : DS_KH) {
+                defaultTableModel.addRow(new Object[]{khachHang.getMaKH(), khachHang.getCCCD(), khachHang.getTenKH(),
+                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
+                khachHang.getSDT(), khachHang.getSoHopDong()
+            });
+        }       
+               
+    }
+    
+    public void TraCuuKH() {
+        DefaultTableModel tblKH_Model = (DefaultTableModel) this.danhSachKHTable.getModel();
+        
+        String option = (String) this.timTheoComboBox.getSelectedItem();
+        String input = this.nhapjTextField.getText();
+        
+        tblKH_Model.setRowCount(0);       
+        
+        ArrayList<KhachHangModel> DS_KH = new ArrayList<KhachHangModel>();
+        DS_KH = KhachHangDAO.TimKH(option, input);
+        
+        for (KhachHangModel khachHang : DS_KH) {
+            tblKH_Model.addRow(new Object[]{khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getCCCD(),
+                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
+                khachHang.getSDT(), khachHang.getSoHopDong()
+            });
+        }
+        if (DS_KH.size() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "Thông tin không tồn tại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,13 +98,13 @@ private static NhanVienModel currentUser;
         MenuPanel.setBackground(new java.awt.Color(153, 153, 255));
 
         NhanVienButton.setText("Nhân Viên");
-
-        KhachHangButton.setText("Khách Hàng");
-        KhachHangButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KhachHangButtonActionPerformed(evt);
+        NhanVienButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NhanVienButtonMouseClicked(evt);
             }
         });
+
+        KhachHangButton.setText("Khách Hàng");
 
         HopDongButton.setText("Hợp Đồng");
         HopDongButton.setPreferredSize(new java.awt.Dimension(75, 35));
@@ -90,9 +140,9 @@ private static NhanVienModel currentUser;
 
         ChamCongButton.setText("Chấm Công");
         ChamCongButton.setPreferredSize(new java.awt.Dimension(93, 35));
-        ChamCongButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChamCongButtonActionPerformed(evt);
+        ChamCongButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChamCongButtonMouseClicked(evt);
             }
         });
 
@@ -101,7 +151,7 @@ private static NhanVienModel currentUser;
         MenuPanelLayout.setHorizontalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ChamCongButton, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(HoaDonButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -110,7 +160,7 @@ private static NhanVienModel currentUser;
                     .addComponent(KhachHangButton, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(NhanVienButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(KhuyenMaiButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,13 +170,13 @@ private static NhanVienModel currentUser;
                 .addGap(18, 18, 18)
                 .addComponent(NhanVienButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(HopDongButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HopDongButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(KhuyenMaiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(KhuyenMaiButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addComponent(TrangBiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(HoaDonButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HoaDonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ChamCongButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(121, Short.MAX_VALUE))
@@ -139,7 +189,7 @@ private static NhanVienModel currentUser;
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Trang nội bộ khách sạn ");
+        jLabel8.setText("Khách Hàng ");
 
         Logout.setBackground(new java.awt.Color(153, 153, 255));
         Logout.setText("Đăng xuất ");
@@ -154,23 +204,22 @@ private static NhanVienModel currentUser;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(244, 244, 244)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(610, Short.MAX_VALUE)
                 .addComponent(Logout)
-                .addGap(25, 25, 25))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(Logout)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(Logout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(495, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -199,27 +248,31 @@ private static NhanVienModel currentUser;
         // TODO add your handling code here:
     }//GEN-LAST:event_HoaDonButtonActionPerformed
 
-    private void ChamCongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChamCongButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChamCongButtonActionPerformed
+    private void ChamCongButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChamCongButtonMouseClicked
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            ChamCongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_ChamCongButtonMouseClicked
 
-    private void KhachHangButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KhachHangButtonActionPerformed
+    private void NhanVienButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NhanVienButtonMouseClicked
         // TODO add your handling code here:
-        dispose();
-        KhachHangFrame.main(currentUser);
-    }//GEN-LAST:event_KhachHangButtonActionPerformed
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            NhanVienFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_NhanVienButtonMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(NhanVienModel args) {
         currentUser = args;
+        
         currentUser.setMaNV(args.getMaNV());
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -230,13 +283,13 @@ private static NhanVienModel currentUser;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomePageEmpFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    //</editor-fold>
-    
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new HomePageEmpFrame().setVisible(true);
+            new ThemKhachHangFrame().setVisible(true);
         });
     }
 
