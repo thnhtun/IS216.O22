@@ -332,11 +332,11 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ChamCongButtonMouseClicked
 
     private void NhanVienButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NhanVienButtonMouseClicked
-        // TODO add your handling code here:
+
         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
             dispose();
             NhanVienFrame.main(currentUser);
-        } else {
+        } else { 
             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_NhanVienButtonMouseClicked
