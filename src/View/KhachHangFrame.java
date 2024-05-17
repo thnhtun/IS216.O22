@@ -269,6 +269,11 @@ public class KhachHangFrame extends javax.swing.JFrame {
         });
 
         suajButton.setText("Sửa");
+        suajButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suajButtonActionPerformed(evt);
+            }
+        });
 
         xoajButton.setText("Xóa");
         xoajButton.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +436,12 @@ public class KhachHangFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_xoajButtonActionPerformed
+
+    private void suajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suajButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        SuaKhachHangFrame.main(currentUser);
+    }//GEN-LAST:event_suajButtonActionPerformed
 
 
     public static void main(NhanVienModel args) {
