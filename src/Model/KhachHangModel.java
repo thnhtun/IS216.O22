@@ -27,6 +27,15 @@ public class KhachHangModel {
         this.SDT = SDT;
         this.SoHopDong = SoHopDong;
     }
+    
+    public KhachHangModel(String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT){
+        this.TenKH = TenKH;
+        this.CCCD = CCCD;
+        this.NgaySinh = NgaySinh;
+        this.GioiTinh = GioiTinh;
+        this.DiaChi = DiaChi;
+        this.SDT = SDT;
+    }
 
     public String getMaKH() {
         return MaKH;
