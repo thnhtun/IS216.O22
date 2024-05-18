@@ -71,7 +71,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
     public void TraCuuKH() {
         // Lấy tùy chọn tìm kiếm và đầu vào từ người dùng
         String option = (String) this.timTheoComboBox.getSelectedItem();
-        String input = this.nhapjTextField.getText();
+        String input = this.nhapjTextField.getText().toLowerCase();
 
         // Xóa tất cả các hàng trong bảng
         defaultTableModel.setRowCount(0);
@@ -423,6 +423,8 @@ public class KhachHangFrame extends javax.swing.JFrame {
             } else if (this.danhSachKHTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
+                Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
+                maKH = maKHObject.toString();
                 int row = KhachHangDAO.XoaKH(maKH);
                 if (row > 0) {
                     JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
@@ -439,8 +441,24 @@ public class KhachHangFrame extends javax.swing.JFrame {
 
     private void suajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suajButtonActionPerformed
         // TODO add your handling code here:
-        dispose();
-        SuaKhachHangFrame.main(currentUser);
+        
+        
+        int removeIndex = this.danhSachKHTable.getSelectedRow();
+        try {
+            if (removeIndex == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dữ liệu cần xoá!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            } else if (this.danhSachKHTable.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
+                maKH = maKHObject.toString();
+                dispose();
+                SuaKhachHangFrame.main(currentUser, maKH);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_suajButtonActionPerformed
 
 

@@ -153,16 +153,16 @@ public class KhachHangDAO {
             String sql = null;
             switch (option) {
                 case "Mã KH":
-                    sql = "SELECT * FROM KHACHHANG WHERE MAKH=?";
+                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(MAKH) = LOWER(?)";
                     break;
                 case "Họ tên":
-                    sql = "SELECT * FROM KHACHHANG WHERE TENKH=?";
+                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(TENKH) = LOWER(?)";
                     break;
                 case "CCCD":
-                    sql = "SELECT * ROM KHACHHANG WHERE CCCD =?";
+                    sql = "SELECT * ROM KHACHHANG WHERE LOWER(CCCD) = LOWER(?)";
                     break;
                 case "SDT":
-                    sql = "SELECT * ROM KHACHHANG WHERE SDT =?";
+                    sql = "SELECT * ROM KHACHHANG WHERE LOWER(SDT) = LOWER(?)";
                     break;
             }
 

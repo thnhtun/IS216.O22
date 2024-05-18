@@ -30,6 +30,7 @@ public class NhanVienDAO {
         ps = con.prepareStatement(sql);
         ps.setString(1, user);
         ps.setString(2, password);
+        
         rs = ps.executeQuery();
         if (rs.next()) {
             LocalDate NgaySinh = rs.getObject("NgaySinh", LocalDate.class);
