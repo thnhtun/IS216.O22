@@ -82,7 +82,7 @@ public class KhachHangDAO {
         ps.setString(4, kh.getGioiTinh());
         ps.setString(5, kh.getDiaChi());
         ps.setString(6, kh.getSDT());
-        ps.setString(8, maKH);
+        ps.setString(7, maKH);
         return ps.executeUpdate() > 0;
     }
 

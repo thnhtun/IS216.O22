@@ -432,15 +432,14 @@ public class KhachHangFrame extends javax.swing.JFrame {
                     // Xử lý xóa ở đây
                     row = KhachHangDAO.XoaKH(maKH);
                     JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+                    if (row > 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Xoá không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
                     // Người dùng hủy xóa
                     JOptionPane.showMessageDialog(rootPane, "Đã hủy xóa!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                }
-
-
-                if (row > 0) {
-                                    } else {
-                    JOptionPane.showMessageDialog(rootPane, "Xoá không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
 
                 inDanhSach();
