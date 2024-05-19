@@ -424,14 +424,12 @@ public class KhachHangFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
                 Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
-                maKH = maKHObject.toString();
-                int row = 0;
+                maKH = maKHObject.toString();;
                 
                 int choice = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
                 if (choice == JOptionPane.OK_OPTION) {
                     // Xử lý xóa ở đây
-                    row = KhachHangDAO.XoaKH(maKH);
-                    JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+                    int row = KhachHangDAO.XoaKH(maKH);
                     if (row > 0) {
                         JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
                     } else {

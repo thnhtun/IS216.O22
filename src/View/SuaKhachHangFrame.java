@@ -459,7 +459,8 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(rootPane, "Lỗi không xác định!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
-
+        dispose();
+        KhachHangFrame.main(currentUser);
     }//GEN-LAST:event_suajButtonActionPerformed
 
     private void huyjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyjButtonActionPerformed
