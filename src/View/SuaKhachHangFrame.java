@@ -6,6 +6,7 @@ import DAO.TrangChuDAO;
 import Model.KhachHangModel;
 import Model.NhanVienModel;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,12 +33,13 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
             kh = KhachHangDAO.getKHtheoMaKHK(maKH);
             // Sử dụng thông tin kh để cập nhật giao diện
             if (kh != null) {
-                hoTenjLable.setText(kh.getTenKH());
-                CCCDjLabel.setText(kh.getCCCD());
-                ngaySinhjLabel.setText(kh.getNgaySinh().toString());
-                gioiTinhjLabel.setText(kh.getGioiTinh());
-                diaChijLabel.setText(kh.getDiaChi());
-                sdtjLabel.setText(kh.getSDT());
+                hoTenjLable.setText("Tên KH: " + kh.getTenKH());
+                CCCDjLabel.setText("CCCD: " + kh.getCCCD());
+                // chuyển đổi sang định dạng ngày tháng năm
+                ngaySinhjLabel.setText(("Ngày sinh: " + kh.getNgaySinh().toString()).formatted(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                gioiTinhjLabel.setText("Giới tính" + kh.getGioiTinh());
+                diaChijLabel.setText("Địa chỉ: " + kh.getDiaChi());
+                sdtjLabel.setText("SĐT" + kh.getSDT());
             } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin khách hàng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
@@ -410,7 +412,6 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
         String gioiTinh = (String) this.gioiTinhjComboBox.getSelectedItem();
         String diaChi = this.diaChijTextField.getText();
         String sdt = this.SDTjTextField.getText();
-
         try {
             // Lấy thông tin cũ của khách hàng từ cơ sở dữ liệu
             KhachHangModel khCu = KhachHangDAO.getKHtheoMaKHK(maKH);
@@ -449,8 +450,16 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
                         "Thông báo", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // In ra thông tin lỗi chi tiết
+            JOptionPane.showMessageDialog(rootPane, "Lỗi khi thực hiện truy vấn SQL!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Lỗi: Tham chiếu null!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Lỗi không xác định!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_suajButtonActionPerformed
 
     private void huyjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyjButtonActionPerformed
@@ -483,7 +492,9 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
         }
         
         java.awt.EventQueue.invokeLater(() -> {
-            new SuaKhachHangFrame(maKH).setVisible(true);
+            SuaKhachHangFrame suaKhachHangFrame = new SuaKhachHangFrame(maKH);
+            suaKhachHangFrame.setLocationRelativeTo(null); // Đặt frame ở trung tâm màn hình desktop
+            suaKhachHangFrame.setVisible(true);
         });
     }
 
