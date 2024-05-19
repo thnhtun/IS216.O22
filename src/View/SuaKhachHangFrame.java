@@ -20,7 +20,6 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
 
     // Constructor nhận giá trị maKH
     public SuaKhachHangFrame(String maKH) {
-        initComponents();
         this.setLocationRelativeTo(null);
         
         this.maKH = maKH; // Lưu giá trị maKH vào biến cục bộ
