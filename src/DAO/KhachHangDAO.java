@@ -51,6 +51,7 @@ public class KhachHangDAO {
         return DS_KH;
     }
     
+    
     public static int XoaKH(String value) throws SQLException {
         Connection con = null;
         try {
@@ -145,6 +146,45 @@ public class KhachHangDAO {
         } 
     }
     
+    public static KhachHangModel getKHtheoMaKHK(String maKH) throws SQLException {
+        // Tạo câu truy vấn 
+        String sql = "SELECT * FROM KHACHHANG WHERE MaKH=?";
+
+        // Tạo đối tượng connection
+        Connection conn = null;
+        KhachHangModel kh = null;
+
+        try {
+            conn = JDBCUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, maKH);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String TenKH = rs.getString(2);
+                String CCCD = rs.getString(3);
+                LocalDate NgaySinh = rs.getDate(4).toLocalDate();
+                String GioiTinh = rs.getString(5);
+                String DiaChi = rs.getString(6);
+                String SDT = rs.getString(7);
+                int SoHopDong  = rs.getInt(8);
+
+                // gọi constructor
+                kh = new KhachHangModel(maKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong);
+            }
+
+            rs.close();
+            ps.close();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return kh;
+    }
+
+    
     public static ArrayList<KhachHangModel> TimKH(String option, String textInput) {
         ArrayList<KhachHangModel> DS_KH = new ArrayList<>();
         try {
@@ -153,16 +193,18 @@ public class KhachHangDAO {
             String sql = null;
             switch (option) {
                 case "Mã KH":
-                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(MAKH) = LOWER(?)";
+                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(MAKH) LIKE LOWER(?)";
+                    textInput = "%" + textInput + "%"; // Để tìm theo chuỗi con
                     break;
                 case "Họ tên":
-                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(TENKH) = LOWER(?)";
+                    sql = "SELECT * FROM KHACHHANG WHERE LOWER(TENKH) LIKE LOWER(?)";
+                    textInput = "%" + textInput + "%"; // Để tìm theo chuỗi con
                     break;
                 case "CCCD":
-                    sql = "SELECT * ROM KHACHHANG WHERE LOWER(CCCD) = LOWER(?)";
+                    sql = "SELECT * FROM KHACHHANG WHERE CCCD = ?";
                     break;
-                case "SDT":
-                    sql = "SELECT * ROM KHACHHANG WHERE LOWER(SDT) = LOWER(?)";
+                case "SĐT":
+                    sql = "SELECT * FROM KHACHHANG WHERE SDT = ?";
                     break;
             }
 

@@ -425,12 +425,24 @@ public class KhachHangFrame extends javax.swing.JFrame {
             } else {
                 Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
                 maKH = maKHObject.toString();
-                int row = KhachHangDAO.XoaKH(maKH);
-                if (row > 0) {
+                int row = 0;
+                
+                int choice = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
+                if (choice == JOptionPane.OK_OPTION) {
+                    // Xử lý xóa ở đây
+                    row = KhachHangDAO.XoaKH(maKH);
                     JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
                 } else {
+                    // Người dùng hủy xóa
+                    JOptionPane.showMessageDialog(rootPane, "Đã hủy xóa!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+
+                if (row > 0) {
+                                    } else {
                     JOptionPane.showMessageDialog(rootPane, "Xoá không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
+
                 inDanhSach();
             }
         } catch (Exception ex) {
@@ -440,20 +452,22 @@ public class KhachHangFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_xoajButtonActionPerformed
 
     private void suajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suajButtonActionPerformed
-        // TODO add your handling code here:
-        
-        
-        int removeIndex = this.danhSachKHTable.getSelectedRow();
+        int selectedIndex = this.danhSachKHTable.getSelectedRow();
+
         try {
-            if (removeIndex == -1) {
-                JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dữ liệu cần xoá!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            if (selectedIndex == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dữ liệu cần sửa!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else if (this.danhSachKHTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
-                Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
-                maKH = maKHObject.toString();
+                Object maKHObject = this.danhSachKHTable.getValueAt(selectedIndex, 0);
+                String maKH = maKHObject.toString();
                 dispose();
                 SuaKhachHangFrame.main(currentUser, maKH);
+
+//                SuaKhachHangFrame suaKhachHangFrame = new SuaKhachHangFrame(maKH);
+//                //suaKhachHangFrame.setCurrentUser(currentUser); // giả định rằng bạn có phương thức để đặt người dùng hiện tại
+//                suaKhachHangFrame.setVisible(true);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
