@@ -19,7 +19,7 @@ public class KhachHangDAO {
         try {
             
             // Tạo câu truy vấn 
-            String sql = "SELECT * FROM KHACHHANG";
+            String sql = "SELECT * FROM KHACHHANG ORDER BY ASC";
             
             // Tạo đối tượng connection
             Connection conn = null;
@@ -31,7 +31,7 @@ public class KhachHangDAO {
             DS_KH.clear();
             
             while (rs.next()) {
-                String MaKH = rs.getString(1);
+                int MaKH = rs.getInt(1);
                 String TenKH = rs.getString(2);
                 String CCCD = rs.getString(3);
                 LocalDate NgaySinh = rs.getDate(4).toLocalDate();
@@ -52,7 +52,7 @@ public class KhachHangDAO {
     }
     
     
-    public static int XoaKH(String value) throws SQLException {
+    public static int XoaKH(int value) throws SQLException {
         Connection con = null;
         try {
             con = JDBCUtil.getConnection();
@@ -62,11 +62,11 @@ public class KhachHangDAO {
         System.out.println(value);
         String sql = "DELETE KHACHHANG WHERE MAKH=?";
         PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-        ps.setString(1, value);
+        ps.setInt(1, value);
         return ps.executeUpdate();
     }
     
-    public static boolean CapNhatKH(String maKH, KhachHangModel kh) throws SQLException {
+    public static boolean CapNhatKH(int maKH, KhachHangModel kh) throws SQLException {
         Connection con = null;
         try {
             con = JDBCUtil.getConnection();
@@ -82,7 +82,7 @@ public class KhachHangDAO {
         ps.setString(4, kh.getGioiTinh());
         ps.setString(5, kh.getDiaChi());
         ps.setString(6, kh.getSDT());
-        ps.setString(7, maKH);
+        ps.setInt(7, maKH);
         return ps.executeUpdate() > 0;
     }
 
@@ -121,20 +121,20 @@ public class KhachHangDAO {
             con = JDBCUtil.getConnection();
 
             // Thực thi câu lệnh SQL
-            String sql = "INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO KHACHHANG (KhachHang_Seq.NEXTVAL, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
             // Tạo đối tượng PreparedStatement
             PreparedStatement ps = con.prepareStatement(sql);
         
             // Thiết lập các tham số cho câu lệnh SQL
-            ps.setString(1, kh.getMaKH());
-            ps.setString(2, kh.getTenKH());
-            ps.setString(3, kh.getCCCD());
-            ps.setObject(4, kh.getNgaySinh()); 
-            ps.setString(5, kh.getGioiTinh());
-            ps.setString(6, kh.getDiaChi());
-            ps.setString(7, kh.getSDT());
-            ps.setInt(8, kh.getSoHopDong());
+//            ps.setString(1, kh.getMaKH());
+            ps.setString(1, kh.getTenKH());
+            ps.setString(2, kh.getCCCD());
+            ps.setObject(3, kh.getNgaySinh()); 
+            ps.setString(4, kh.getGioiTinh());
+            ps.setString(5, kh.getDiaChi());
+            ps.setString(6, kh.getSDT());
+            ps.setInt(7, kh.getSoHopDong());
             
             System.out.println("thêm thành công");
 
@@ -146,7 +146,7 @@ public class KhachHangDAO {
         } 
     }
     
-    public static KhachHangModel getKHtheoMaKHK(String maKH) throws SQLException {
+    public static KhachHangModel getKHtheoMaKHK(int maKH) throws SQLException {
         // Tạo câu truy vấn 
         String sql = "SELECT * FROM KHACHHANG WHERE MaKH=?";
 
@@ -157,7 +157,7 @@ public class KhachHangDAO {
         try {
             conn = JDBCUtil.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, maKH);
+            ps.setInt(1, maKH);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -213,7 +213,7 @@ public class KhachHangDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhachHangModel kh_temp = new KhachHangModel();
-                kh_temp.setMaKH(rs.getString("MAKH"));
+                kh_temp.setMaKH(rs.getInt("MAKH"));
                 kh_temp.setTenKH(rs.getString("TENKH"));
                 kh_temp.setCCCD(rs.getString("CCCD"));
                 kh_temp.setNgaySinh(rs.getDate("NGAYSINH").toLocalDate());

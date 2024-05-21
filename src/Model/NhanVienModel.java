@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 
 public class NhanVienModel {
-    private String MaNV;
+    private int MaNV;
     private String TenNV;
     private String CCCD;
     private LocalDate NgaySinh;
@@ -19,7 +19,7 @@ public class NhanVienModel {
     public NhanVienModel(){
     }
     
-    public NhanVienModel(String MaNV, String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, 
+    public NhanVienModel(int MaNV, String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, 
                     String LoaiNV, String TaiKhoan, String MatKhau, double LuongCB){
         this.MaNV = MaNV;
         this.TenNV = TenNV;
@@ -33,11 +33,11 @@ public class NhanVienModel {
         this.LuongCB = LuongCB;
     }
 
-    public String getMaNV() {
+    public int getMaNV() {
         return MaNV;
     }
 
-    public void setMaNV(String MaNV) {
+    public void setMaNV(int MaNV) {
         this.MaNV = MaNV;
     }
 

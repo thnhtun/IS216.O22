@@ -4,7 +4,7 @@ package Model;
 import java.time.LocalDate;
 
 public class KhachHangModel {
-    private String MaKH;
+    private int MaKH;
     private String TenKH;
     private String CCCD;
     private LocalDate NgaySinh;
@@ -17,8 +17,18 @@ public class KhachHangModel {
         
     }
     
-    public KhachHangModel(String MaKH, String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, int SoHopDong){
+    public KhachHangModel(int MaKH, String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, int SoHopDong){
         this.MaKH = MaKH;
+        this.TenKH = TenKH;
+        this.CCCD = CCCD;
+        this.NgaySinh = NgaySinh;
+        this.GioiTinh = GioiTinh;
+        this.DiaChi = DiaChi;
+        this.SDT = SDT;
+        this.SoHopDong = SoHopDong;
+    }
+    
+    public KhachHangModel(String TenKH, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, int SoHopDong){
         this.TenKH = TenKH;
         this.CCCD = CCCD;
         this.NgaySinh = NgaySinh;
@@ -37,11 +47,11 @@ public class KhachHangModel {
         this.SDT = SDT;
     }
 
-    public String getMaKH() {
+    public int getMaKH() {
         return MaKH;
     }
 
-    public void setMaKH(String MaKH) {
+    public void setMaKH(int MaKH) {
         this.MaKH = MaKH;
     }
 

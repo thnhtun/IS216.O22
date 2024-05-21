@@ -2,31 +2,31 @@
 package Model;
 
 public class TaoHoaDonModel {
-    private String MaHD;
-    private String MaNV;
+    private int MaHD;
+    private int MaNV;
     
     public TaoHoaDonModel(){
         
     }
     
-    public TaoHoaDonModel(String MaHD, String MaNV){
+    public TaoHoaDonModel(int MaHD, int MaNV){
         this.MaHD = MaHD;
         this.MaNV = MaNV;
     }
 
-    public String getMaHD() {
+    public int getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(String MaHD) {
+    public void setMaHD(int MaHD) {
         this.MaHD = MaHD;
     }
 
-    public String getMaNV() {
+    public int getMaNV() {
         return MaNV;
     }
 
-    public void setMaNV(String MaNV) {
+    public void setMaNV(int MaNV) {
         this.MaNV = MaNV;
     }
     

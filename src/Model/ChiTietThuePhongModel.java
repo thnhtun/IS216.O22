@@ -2,42 +2,42 @@
 package Model;
 
 public class ChiTietThuePhongModel {
-    private String MaHopDong;
-    private String MaHT;
-    private String MaPhong;
+    private int MaHopDong;
+    private int MaHT;
+    private int MaPhong;
     private double Gia;
     
     public ChiTietThuePhongModel(){
     }
     
-    public ChiTietThuePhongModel(String MaHopDong, String MaHT, String MaPhong, double Gia){
+    public ChiTietThuePhongModel(int MaHopDong, int MaHT, int MaPhong, double Gia){
         this.MaHopDong = MaHopDong;
         this.MaHT = MaHT;
         this.MaPhong = MaPhong;
         this.Gia = Gia;
     }
 
-    public String getMaHopDong() {
+    public int getMaHopDong() {
         return MaHopDong;
     }
 
-    public void setMaHopDong(String MaHopDong) {
+    public void setMaHopDong(int MaHopDong) {
         this.MaHopDong = MaHopDong;
     }
     
-    public String getMaHT() {
+    public int getMaHT() {
         return MaHT;
     }
 
-    public void setMaHT(String MaHT) {
+    public void setMaHT(int MaHT) {
         this.MaHT = MaHT;
     }
 
-    public String getMaPhong() {
+    public int getMaPhong() {
         return MaPhong;
     }
 
-    public void setMaPhong(String MaPhong) {
+    public void setMaPhong(int MaPhong) {
         this.MaPhong = MaPhong;
     }
     

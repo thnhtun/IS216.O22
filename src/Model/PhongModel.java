@@ -3,7 +3,7 @@ package Model;
 
 
 public class PhongModel {
-    private String MaPhong;
+    private int MaPhong;
     private String LoaiPhong; 
     private String KieuPhong;
     
@@ -11,17 +11,17 @@ public class PhongModel {
         
     }
     
-    public PhongModel(String MaPhong, String LoaiPhong, String KieuPhong){
+    public PhongModel(int MaPhong, String LoaiPhong, String KieuPhong){
         this.MaPhong = MaPhong;
         this.LoaiPhong = LoaiPhong;
         this.KieuPhong = KieuPhong;
     }
 
-    public String getMaPhong() {
+    public int getMaPhong() {
         return MaPhong;
     }
 
-    public void setMaPhong(String MaPhong) {
+    public void setMaPhong(int MaPhong) {
         this.MaPhong = MaPhong;
     }
 

@@ -20,7 +20,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
             }
         };
     
-    String maKH;
+    int maKH;
     ArrayList<KhachHangModel> DS_KH;
     int current = 0;
 
@@ -424,7 +424,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
                 Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
-                maKH = maKHObject.toString();;
+                maKH = (Integer) maKHObject;
                 
                 int choice = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
                 if (choice == JOptionPane.OK_OPTION) {
@@ -458,7 +458,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
                 Object maKHObject = this.danhSachKHTable.getValueAt(selectedIndex, 0);
-                String maKH = maKHObject.toString();
+                int maKH = (Integer) maKHObject;
                 dispose();
                 SuaKhachHangFrame.main(currentUser, maKH);
 

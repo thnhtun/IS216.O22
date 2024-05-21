@@ -2,33 +2,33 @@
 package Model;
 
 public class HongTrangBiModel {
-    private String MaTB;
-    private String MaHD;
+    private int MaTB;
+    private int MaHD;
     private int SoLuongHong;
     
     public HongTrangBiModel(){
         
     }
     
-    public HongTrangBiModel(String MaTB, String MaHD, int SoLuongHong){
+    public HongTrangBiModel(int MaTB, int MaHD, int SoLuongHong){
         this.MaTB = MaTB;
         this.MaHD = MaHD;
         this.SoLuongHong = SoLuongHong;
     }
 
-    public String getMaTB() {
+    public int getMaTB() {
         return MaTB;
     }
 
-    public void setMaTB(String MaTB) {
+    public void setMaTB(int MaTB) {
         this.MaTB = MaTB;
     }
 
-    public String getMaHD() {
+    public int getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(String MaHD) {
+    public void setMaHD(int MaHD) {
         this.MaHD = MaHD;
     }
 

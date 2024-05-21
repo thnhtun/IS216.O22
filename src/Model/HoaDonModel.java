@@ -5,9 +5,9 @@ import java.time.LocalDate;
 
 
 public class HoaDonModel {
-    private String MaHD;  
-    private String MaHopDong;
-    private String MaKM;
+    private int MaHD;  
+    private int MaHopDong;
+    private int MaKM;
     private LocalDate NgayLapHD;
     private double TongTien; 
     
@@ -15,7 +15,7 @@ public class HoaDonModel {
         
     }
     
-    public HoaDonModel(String MaHD, String MaHopDong, String MaKM, LocalDate NgayLapHD, double TongTien){
+    public HoaDonModel(int MaHD, int MaHopDong, int MaKM, LocalDate NgayLapHD, double TongTien){
         this.MaHD = MaHD;
         this.MaHopDong = MaHopDong;
         this.MaKM = MaKM;
@@ -23,27 +23,27 @@ public class HoaDonModel {
         this.TongTien = TongTien;
     }
 
-    public String getMaHD() {
+    public int getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(String MaHD) {
+    public void setMaHD(int MaHD) {
         this.MaHD = MaHD;
     }
     
-    public String getMaHopDong() {
+    public int getMaHopDong() {
         return MaHopDong;
     }
 
-    public void setMaHopDong(String MaHopDong) {
+    public void setMaHopDong(int MaHopDong) {
         this.MaHopDong = MaHopDong;
     }
 
-    public String getMaKM() {
+    public int getMaKM() {
         return MaKM;
     }
 
-    public void setMaKM(String MaKM) {
+    public void setMaKM(int MaKM) {
         this.MaKM = MaKM;
     }
     

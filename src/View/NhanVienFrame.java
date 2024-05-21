@@ -12,8 +12,10 @@ import java.util.ArrayList;
  * @author phuch
  */
 public class NhanVienFrame extends javax.swing.JFrame {
-     ArrayList<NhanVienModel> DS_NV;
-      private static String maNV;
+
+    ArrayList<NhanVienModel> DS_NV;
+    private static int maNV;
+
     public NhanVienFrame() {
         initComponents();
     }
@@ -46,11 +48,12 @@ public class NhanVienFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-       private static NhanVienModel user;
+    private static NhanVienModel user;
+
     public static void main(NhanVienModel args) {
-      NhanVienFrame.maNV = args.getMaNV();
+        NhanVienFrame.maNV = args.getMaNV();
         user = args;
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NhanVienFrame().setVisible(true);

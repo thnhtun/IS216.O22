@@ -2,42 +2,43 @@ package Model;
 
 public class ChamCongModel {
 
-    private String MaCC;
-    private String MaNV;
+    private int MaCC;
+    private int MaNV;
     private int SGLT;
     private int SNDL;
 
     public ChamCongModel() {
     }
 
-    public ChamCongModel(String MaCC, String MaNV, int SGLT, int SNDL) {
+    public ChamCongModel(int MaCC, int MaNV, int SGLT, int SNDL) {
         this.MaCC = MaCC;
         this.MaNV = MaNV;
         this.SGLT = SGLT;
         this.SNDL = SNDL;
     }
 
+    
     public ChamCongModel(int SGLT) {
         this.SGLT = SGLT;
     }
 
-    public ChamCongModel(String maCC) {
-        this.MaCC = maCC;
-    }
+//    public ChamCongModel(int maCC) {
+//        this.MaCC = maCC;
+//    }
 
-    public String getmaCC() {
+    public int getmaCC() {
         return MaCC;
     }
 
-    public void setmaCC(String maCC) {
+    public void setmaCC(int maCC) {
         this.MaCC = maCC;
     }
 
-    public String getmaNV() {
+    public int getmaNV() {
         return MaNV;
     }
 
-    public void setmaNV(String maNV) {
+    public void setmaNV(int maNV) {
         this.MaNV = maNV;
     }
 

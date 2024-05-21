@@ -2,7 +2,7 @@
 package Model;
 
 public class TrangBiModel {
-    private String MaTB; 
+    private int MaTB; 
     private String TenTB; 
     private double GiaTB;
     private int SoLuong;
@@ -11,18 +11,18 @@ public class TrangBiModel {
         
     }
     
-    public TrangBiModel(String MaTB, String TenTB, double GiaTB, int SoLuong){
+    public TrangBiModel(int MaTB, String TenTB, double GiaTB, int SoLuong){
         this.MaTB = MaTB;
         this.TenTB = TenTB;
         this.GiaTB = GiaTB;
         this.SoLuong = SoLuong;
     }
     
-    public String getMaTB() {
+    public int getMaTB() {
         return MaTB;
     }
 
-    public void setMaTB(String MaTB) {
+    public void setMaTB(int MaTB) {
         this.MaTB = MaTB;
     }
 

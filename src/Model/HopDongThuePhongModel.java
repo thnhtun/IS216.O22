@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 
 public class HopDongThuePhongModel {
-    private String MaHopDong;
-    private String MaKH;  
+    private int MaHopDong;
+    private int MaKH;  
     private LocalDateTime NgayLapHopDong;
     private LocalDateTime TGNhanPhong;
     private LocalDateTime TGTraPhong;
@@ -19,7 +19,7 @@ public class HopDongThuePhongModel {
     
     }
     
-    public HopDongThuePhongModel(String MaHopDong, String MaKH, LocalDateTime NgayLapHopDong, LocalDateTime TGNhanPhong, 
+    public HopDongThuePhongModel(int MaHopDong, int MaKH, LocalDateTime NgayLapHopDong, LocalDateTime TGNhanPhong, 
                             LocalDateTime TGTraPhong, String TinhTrangHD, int SoLuongNguoiLon, int SoLuongTreEm, double TriGiaHopDong){
         this.MaHopDong = MaHopDong;
         this.MaKH = MaKH;
@@ -32,19 +32,19 @@ public class HopDongThuePhongModel {
         this.TriGiaHopDong = TriGiaHopDong;
     }
 
-    public String getMaHopDong() {
+    public int getMaHopDong() {
         return MaHopDong;
     }
 
-    public void setMaHopDong(String MaHopDong) {
+    public void setMaHopDong(int MaHopDong) {
         this.MaHopDong = MaHopDong;
     }
 
-    public String getMaKH() {
+    public int getMaKH() {
         return MaKH;
     }
 
-    public void setMaKH(String MaKH) {
+    public void setMaKH(int MaKH) {
         this.MaKH = MaKH;
     }
 

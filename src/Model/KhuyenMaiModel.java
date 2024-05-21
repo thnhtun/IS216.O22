@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 
 public class KhuyenMaiModel {
-    private String MaKM;
+    private int MaKM;
     private String TenKM; 
     private String MoTaKM; 
     private LocalDate NgayBatDau;
@@ -16,7 +16,7 @@ public class KhuyenMaiModel {
         
     }
     
-    public KhuyenMaiModel(String MaKM, String TenKM, String MoTaKM, LocalDate NgayBatDau, LocalDate NgayKetThuc, double PhanTramKM){
+    public KhuyenMaiModel(int MaKM, String TenKM, String MoTaKM, LocalDate NgayBatDau, LocalDate NgayKetThuc, double PhanTramKM){
         this.MaKM = MaKM;
         this.TenKM = TenKM;
         this.MoTaKM = MoTaKM;
@@ -25,11 +25,11 @@ public class KhuyenMaiModel {
         this.PhanTramKM = PhanTramKM;
     }
 
-    public String getMaKM() {
+    public int getMaKM() {
         return MaKM;
     }
 
-    public void setMaKM(String MaKM) {
+    public void setMaKM(int MaKM) {
         this.MaKM = MaKM;
     }
 

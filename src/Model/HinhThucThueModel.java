@@ -3,23 +3,23 @@ package Model;
 
 
 public class HinhThucThueModel {
-    private String MaHT;
+    private int MaHT;
     private String TenHT;
 
     public HinhThucThueModel(){
         
     }
     
-    public HinhThucThueModel(String MaHT, String TenHT){
+    public HinhThucThueModel(int MaHT, String TenHT){
         this.MaHT = MaHT;
         this.TenHT = TenHT;
     }
     
-    public String getMaHT() {
+    public int getMaHT() {
         return MaHT;
     }
 
-    public void setMaHT(String MaHT) {
+    public void setMaHT(int MaHT) {
         this.MaHT = MaHT;
     }
 

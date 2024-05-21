@@ -35,7 +35,7 @@ public class NhanVienDAO {
         if (rs.next()) {
             LocalDate NgaySinh = rs.getObject("NgaySinh", LocalDate.class);
             return new NhanVienModel(
-                rs.getString("MaNV"),
+                rs.getInt("MaNV"),
                 rs.getString("TenNV"),
                 rs.getString("CCCD"),
                 NgaySinh,

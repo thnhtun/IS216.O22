@@ -16,11 +16,11 @@ import java.util.logging.Logger;
 
 public class SuaKhachHangFrame extends javax.swing.JFrame {
     private static NhanVienModel currentUser;
-    private String maKH; // Biến cục bộ để lưu trữ giá trị maKH
+    private int maKH; // Biến cục bộ để lưu trữ giá trị maKH
     private KhachHangModel kh; // Biến để lưu trữ thông tin khách hàng
 
     // Constructor nhận giá trị maKH
-    public SuaKhachHangFrame(String maKH) {
+    public SuaKhachHangFrame(int maKH) {
         this.setLocationRelativeTo(null);
         
         this.maKH = maKH; // Lưu giá trị maKH vào biến cục bộ
@@ -476,7 +476,7 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_KhachHangButtonActionPerformed
 
 
-    public static void main(NhanVienModel args, String maKH) {
+    public static void main(NhanVienModel args, int maKH) {
         currentUser = args;
         
         currentUser.setMaNV(args.getMaNV());

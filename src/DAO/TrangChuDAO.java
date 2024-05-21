@@ -18,13 +18,13 @@ import java.sql.ResultSet;
 
 
 public class TrangChuDAO {
-  public static int KTLoaiNV(String maUser) {
+  public static int KTLoaiNV(int maUser) {
         // System.out.println(maUser);
         try {
             Connection con = JDBCUtil.getConnection();
             String sql = "Select LoaiNV from NhanVien  where MaNV=? ";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, maUser);
+            ps.setInt(1, maUser);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 // System.out.println(rs.getString("LoaiNV"));
