@@ -202,6 +202,11 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
         NhanVienLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         NhanVienLb.setForeground(new java.awt.Color(255, 255, 255));
         NhanVienLb.setText("Nhân viên");
+        NhanVienLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NhanVienLbMouseClicked(evt);
+            }
+        });
         MenuPanel.add(NhanVienLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -227,11 +232,21 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
         ChamCongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         ChamCongLb.setForeground(new java.awt.Color(255, 255, 255));
         ChamCongLb.setText("Chấm công");
+        ChamCongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChamCongLbMouseClicked(evt);
+            }
+        });
         MenuPanel.add(ChamCongLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, -1, -1));
 
         DangXuatLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         DangXuatLb.setForeground(new java.awt.Color(255, 255, 255));
         DangXuatLb.setText("Đăng xuất");
+        DangXuatLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DangXuatLbMouseClicked(evt);
+            }
+        });
         MenuPanel.add(DangXuatLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, -1));
         MenuPanel.add(LogoSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 15, 90, 90));
         MenuPanel.add(KhachHangSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 30, 30));
@@ -419,7 +434,6 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_suajButtonActionPerformed
 
     private void huyjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyjButtonActionPerformed
-        // TODO add your handling code here:
         dispose();
         KhachHangFrame.main(currentUser);
     }//GEN-LAST:event_huyjButtonActionPerformed
@@ -428,6 +442,32 @@ public class SuaKhachHangFrame extends javax.swing.JFrame {
         dispose();
         KhachHangFrame.main(currentUser);
     }//GEN-LAST:event_KhachHangLbMouseClicked
+
+    private void DangXuatLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DangXuatLbMouseClicked
+        int a = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất không?", "Đăng xuất", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            dispose();
+            DangNhapFrame.main(null);
+        }
+    }//GEN-LAST:event_DangXuatLbMouseClicked
+
+    private void NhanVienLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NhanVienLbMouseClicked
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            NhanVienFrame.main(currentUser);
+        } else { 
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_NhanVienLbMouseClicked
+
+    private void ChamCongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChamCongLbMouseClicked
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            ChamCongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_ChamCongLbMouseClicked
 
     public static void main(NhanVienModel args, int maKH) {
         currentUser = args;
