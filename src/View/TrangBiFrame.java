@@ -9,7 +9,7 @@ private static NhanVienModel currentUser;
  
     public TrangBiFrame() {
         initComponents();
-        addSVG();
+        addSVG(); // Thêm ảnh SVG vào Frame
     }
 
     @SuppressWarnings("unchecked")
@@ -38,19 +38,19 @@ private static NhanVienModel currentUser;
         DangXuatSvg = new Image.SVGImage();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        TimComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        NhapTextfield = new javax.swing.JTextField();
+        TraCuuButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ThemButton = new javax.swing.JButton();
+        XoaButton = new javax.swing.JButton();
+        SuaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(196, 196, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,25 +144,25 @@ private static NhanVienModel currentUser;
         jLabel2.setText("Tìm kiếm theo");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 100, 40));
+        TimComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        TimComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TimComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        TimComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(TimComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 100, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nhập thông tin");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 200, 40));
+        NhapTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(NhapTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 200, 40));
 
-        jButton1.setBackground(new java.awt.Color(24, 24, 68));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Tra cứu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 90, 40));
+        TraCuuButton.setBackground(new java.awt.Color(19, 19, 79));
+        TraCuuButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TraCuuButton.setForeground(new java.awt.Color(255, 255, 255));
+        TraCuuButton.setText("Tra cứu");
+        jPanel1.add(TraCuuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 90, 40));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -180,23 +180,23 @@ private static NhanVienModel currentUser;
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 640, 350));
 
-        jButton2.setBackground(new java.awt.Color(19, 19, 79));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Thêm");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 90, 40));
+        ThemButton.setBackground(new java.awt.Color(19, 19, 79));
+        ThemButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ThemButton.setForeground(new java.awt.Color(255, 255, 255));
+        ThemButton.setText("Thêm");
+        jPanel1.add(ThemButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 90, 40));
 
-        jButton3.setBackground(new java.awt.Color(19, 19, 79));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Xoá");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, 90, 40));
+        XoaButton.setBackground(new java.awt.Color(19, 19, 79));
+        XoaButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        XoaButton.setForeground(new java.awt.Color(255, 255, 255));
+        XoaButton.setText("Xoá");
+        jPanel1.add(XoaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, 90, 40));
 
-        jButton4.setBackground(new java.awt.Color(19, 19, 79));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Sửa");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 90, 40));
+        SuaButton.setBackground(new java.awt.Color(19, 19, 79));
+        SuaButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SuaButton.setForeground(new java.awt.Color(255, 255, 255));
+        SuaButton.setText("Sửa");
+        jPanel1.add(SuaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,9 +208,7 @@ private static NhanVienModel currentUser;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -322,13 +320,14 @@ private static NhanVienModel currentUser;
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JLabel NhanVienLb;
     private Image.SVGImage NhanVienSvg;
+    private javax.swing.JTextField NhapTextfield;
+    private javax.swing.JButton SuaButton;
+    private javax.swing.JButton ThemButton;
+    private javax.swing.JComboBox<String> TimComboBox;
+    private javax.swing.JButton TraCuuButton;
     private javax.swing.JLabel TrangBiLb;
     private Image.SVGImage TrangBiSvg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton XoaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -336,6 +335,5 @@ private static NhanVienModel currentUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
