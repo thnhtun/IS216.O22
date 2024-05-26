@@ -222,69 +222,6 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="Image.SVGImage" name="LogoSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="55" y="15" width="90" height="90"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="KhachHangSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="180" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="NhanVienSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="230" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="HopDongSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="280" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="KhuyenMaiSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="330" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="TrangBiSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="380" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="HoaDonSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="430" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="ChamCongSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="480" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="Image.SVGImage" name="DangXuatSvg">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="560" width="30" height="30"/>
-                </Constraint>
-              </Constraints>
-            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel8">
