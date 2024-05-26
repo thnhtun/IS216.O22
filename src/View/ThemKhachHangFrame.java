@@ -55,15 +55,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         HoaDonLb = new javax.swing.JLabel();
         ChamCongLb = new javax.swing.JLabel();
         DangXuatLb = new javax.swing.JLabel();
-        LogoSvg = new Image.SVGImage();
-        KhachHangSvg = new Image.SVGImage();
-        NhanVienSvg = new Image.SVGImage();
-        HopDongSvg = new Image.SVGImage();
-        KhuyenMaiSvg = new Image.SVGImage();
-        TrangBiSvg = new Image.SVGImage();
-        HoaDonSvg = new Image.SVGImage();
-        ChamCongSvg = new Image.SVGImage();
-        DangXuatSvg = new Image.SVGImage();
 
         jButton2.setText("jButton2");
 
@@ -218,15 +209,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
             }
         });
         MenuPanel.add(DangXuatLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, -1));
-        MenuPanel.add(LogoSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 15, 90, 90));
-        MenuPanel.add(KhachHangSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 30, 30));
-        MenuPanel.add(NhanVienSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 30, 30));
-        MenuPanel.add(HopDongSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 30, 30));
-        MenuPanel.add(KhuyenMaiSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 30, 30));
-        MenuPanel.add(TrangBiSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 30, 30));
-        MenuPanel.add(HoaDonSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 30, 30));
-        MenuPanel.add(ChamCongSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 30, 30));
-        MenuPanel.add(DangXuatSvg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 30, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -328,24 +310,7 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSVG(){
-         LogoSvg.setSVGImage("image/logo.svg", 90, 90);
-         KhachHangSvg.setSVGImage("image/khachhang.svg", 30, 30);
-         NhanVienSvg.setSVGImage("image/nhanvien.svg", 30, 30);
-         HopDongSvg.setSVGImage("image/hopdong.svg", 30, 30);
-         KhuyenMaiSvg.setSVGImage("image/khuyenmai.svg", 30, 30);
-         TrangBiSvg.setSVGImage("image/trangbi.svg", 30, 30);
-         HoaDonSvg.setSVGImage("image/hoadon.svg", 30, 30);
-         ChamCongSvg.setSVGImage("image/chamcong.svg", 30, 30);
-         DangXuatSvg.setSVGImage("image/dangxuat.svg", 30, 30);
          
-         KhachHangSvg.setWhiteColor();
-         NhanVienSvg.setWhiteColor();
-         HopDongSvg.setWhiteColor();
-         KhuyenMaiSvg.setWhiteColor();
-         TrangBiSvg.setWhiteColor();
-         HoaDonSvg.setWhiteColor();
-         ChamCongSvg.setWhiteColor();
-         DangXuatSvg.setWhiteColor();
     }
     
     private void themjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themjButtonActionPerformed
@@ -436,24 +401,15 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CCCDjTextField;
     private javax.swing.JLabel ChamCongLb;
-    private Image.SVGImage ChamCongSvg;
     private javax.swing.JLabel DangXuatLb;
-    private Image.SVGImage DangXuatSvg;
     private javax.swing.JLabel HoaDonLb;
-    private Image.SVGImage HoaDonSvg;
     private javax.swing.JLabel HopDongLb;
-    private Image.SVGImage HopDongSvg;
     private javax.swing.JLabel KhachHangLb;
-    private Image.SVGImage KhachHangSvg;
     private javax.swing.JLabel KhuyenMaiLb;
-    private Image.SVGImage KhuyenMaiSvg;
-    private Image.SVGImage LogoSvg;
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JLabel NhanVienLb;
-    private Image.SVGImage NhanVienSvg;
     private javax.swing.JTextField SDTjTextField;
     private javax.swing.JLabel TrangBiLb;
-    private Image.SVGImage TrangBiSvg;
     private javax.swing.JTextField diaChijTextField;
     private javax.swing.JComboBox<String> gioiTinhjComboBox;
     private javax.swing.JTextField hoTenjTextField;
