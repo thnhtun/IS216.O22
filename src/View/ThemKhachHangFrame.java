@@ -20,7 +20,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
     public ThemKhachHangFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        addSVG(); // Thêm ảnh SVG vào Frame
     }
 
     @SuppressWarnings("unchecked")
@@ -83,7 +82,7 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("ID/CCCD");
+        jLabel4.setText("CCCD");
 
         CCCDjTextField.setBackground(new java.awt.Color(255, 255, 255));
         CCCDjTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -143,12 +142,10 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
 
         MenuPanel.setBackground(new java.awt.Color(24, 24, 68));
         MenuPanel.setPreferredSize(new java.awt.Dimension(200, 600));
-        MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(220, 220, 46));
         jLabel2.setText("BRIGHT STAR");
-        MenuPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 120, -1, -1));
 
         KhachHangLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhachHangLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,7 +155,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
                 KhachHangLbMouseClicked(evt);
             }
         });
-        MenuPanel.add(KhachHangLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
         NhanVienLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         NhanVienLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,27 +164,22 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
                 NhanVienLbMouseClicked(evt);
             }
         });
-        MenuPanel.add(NhanVienLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
         HopDongLb.setText("Hợp đồng");
-        MenuPanel.add(HopDongLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
         KhuyenMaiLb.setText("Khuyến mãi");
-        MenuPanel.add(KhuyenMaiLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
         TrangBiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         TrangBiLb.setForeground(new java.awt.Color(255, 255, 255));
         TrangBiLb.setText("Trang bị");
-        MenuPanel.add(TrangBiLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
         HoaDonLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HoaDonLb.setForeground(new java.awt.Color(255, 255, 255));
         HoaDonLb.setText("Hoá đơn");
-        MenuPanel.add(HoaDonLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
 
         ChamCongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         ChamCongLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,7 +189,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
                 ChamCongLbMouseClicked(evt);
             }
         });
-        MenuPanel.add(ChamCongLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, -1, -1));
 
         DangXuatLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         DangXuatLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,7 +198,64 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
                 DangXuatLbMouseClicked(evt);
             }
         });
-        MenuPanel.add(DangXuatLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, -1));
+
+        javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
+        MenuPanel.setLayout(MenuPanelLayout);
+        MenuPanelLayout.setHorizontalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(KhachHangLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(NhanVienLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(HopDongLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(KhuyenMaiLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(TrangBiLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(HoaDonLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(ChamCongLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(DangXuatLb)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        MenuPanelLayout.setVerticalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addComponent(KhachHangLb)
+                .addGap(23, 23, 23)
+                .addComponent(NhanVienLb)
+                .addGap(23, 23, 23)
+                .addComponent(HopDongLb)
+                .addGap(23, 23, 23)
+                .addComponent(KhuyenMaiLb)
+                .addGap(23, 23, 23)
+                .addComponent(TrangBiLb)
+                .addGap(23, 23, 23)
+                .addComponent(HoaDonLb)
+                .addGap(23, 23, 23)
+                .addComponent(ChamCongLb)
+                .addGap(53, 53, 53)
+                .addComponent(DangXuatLb))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -309,9 +356,6 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addSVG(){
-         
-    }
     
     private void themjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themjButtonActionPerformed
         String hoTen = this.hoTenjTextField.getText();
@@ -396,6 +440,9 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new ThemKhachHangFrame().setVisible(true);
         });
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

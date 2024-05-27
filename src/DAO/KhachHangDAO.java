@@ -19,7 +19,7 @@ public class KhachHangDAO {
         try {
             
             // Tạo câu truy vấn 
-            String sql = "SELECT * FROM KHACHHANG ORDER BY ASC";
+            String sql = "SELECT * FROM KHACHHANG ORDER BY MAKH ASC";
             
             // Tạo đối tượng connection
             Connection conn = null;
@@ -121,7 +121,7 @@ public class KhachHangDAO {
             con = JDBCUtil.getConnection();
 
             // Thực thi câu lệnh SQL
-            String sql = "INSERT INTO KHACHHANG (KhachHang_Seq.NEXTVAL, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO KHACHHANG (MaKH, TenKH, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, SoHopDong) VALUES (KhachHang_Seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
         
             // Tạo đối tượng PreparedStatement
             PreparedStatement ps = con.prepareStatement(sql);
@@ -136,7 +136,6 @@ public class KhachHangDAO {
             ps.setString(6, kh.getSDT());
             ps.setInt(7, kh.getSoHopDong());
             
-            System.out.println("thêm thành công");
 
             // Thực thi câu lệnh SQL
             return ps.executeUpdate() > 0;
