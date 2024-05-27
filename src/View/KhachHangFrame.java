@@ -149,6 +149,8 @@ public class KhachHangFrame extends javax.swing.JFrame {
         HoaDonLb = new javax.swing.JLabel();
         ChamCongLb = new javax.swing.JLabel();
         DangXuatLb = new javax.swing.JLabel();
+        luongLb = new javax.swing.JLabel();
+        phongLb = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -296,6 +298,19 @@ public class KhachHangFrame extends javax.swing.JFrame {
             }
         });
 
+        luongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        luongLb.setForeground(new java.awt.Color(255, 255, 255));
+        luongLb.setText("Lương");
+        luongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                luongLbMouseClicked(evt);
+            }
+        });
+
+        phongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        phongLb.setForeground(new java.awt.Color(255, 255, 255));
+        phongLb.setText("Phòng");
+
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
         MenuPanelLayout.setHorizontalGroup(
@@ -303,7 +318,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
@@ -325,10 +340,11 @@ public class KhachHangFrame extends javax.swing.JFrame {
                         .addComponent(HoaDonLb))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(ChamCongLb))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(DangXuatLb)))
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(luongLb)
+                            .addComponent(ChamCongLb)
+                            .addComponent(DangXuatLb)
+                            .addComponent(phongLb))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         MenuPanelLayout.setVerticalGroup(
@@ -336,23 +352,27 @@ public class KhachHangFrame extends javax.swing.JFrame {
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addComponent(phongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KhachHangLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NhanVienLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HopDongLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KhuyenMaiLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TrangBiLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HoaDonLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ChamCongLb)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(luongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(DangXuatLb)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -528,6 +548,10 @@ public class KhachHangFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DangXuatLbMouseClicked
 
+    private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_luongLbMouseClicked
+
 
     public static void main(NhanVienModel args) {
         currentUser = args;
@@ -572,7 +596,9 @@ public class KhachHangFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel luongLb;
     private javax.swing.JTextField nhapjTextField;
+    private javax.swing.JLabel phongLb;
     private javax.swing.JButton suajButton;
     private javax.swing.JButton themjButton;
     private javax.swing.JComboBox<String> timTheoComboBox;

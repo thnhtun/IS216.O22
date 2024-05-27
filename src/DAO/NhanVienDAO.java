@@ -159,7 +159,7 @@ public class NhanVienDAO {
     }
     
     public boolean ThemNV(NhanVienModel nv) throws SQLException {
-        String sql = "INSERT INTO DATABASE_DOAN_NPNT.NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, DIACHI, LOAINV, TAIKHOAN, MATKHAU, SDT, LUONGCB) VALUES (NhanVien_Seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DATABASE_DOAN_NPNT.NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, DIACHI, SDT, LOAINV, TAIKHOAN, MATKHAU, LUONGCB) VALUES (NhanVien_Seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -170,27 +170,30 @@ public class NhanVienDAO {
             ps.setString(3, nv.getGioiTinh());
             ps.setObject(4, nv.getNgaySinh());
             ps.setString(5, nv.getDiaChi());
-            ps.setString(6, nv.getLoaiNV());
+            ps.setString(6, nv.getSDT());
+            ps.setString(7, nv.getLoaiNV());
+
 
 
             // Kiểm tra điều kiện mỗi loại nhân viên sẽ được cấp tài khoản và mật khẩu khác nhau
             switch (nv.getLoaiNV()) {
                 case "Quản lý" -> {
-                    ps.setString(7, "quanly" + nv.getMaNV());
-                    ps.setString(8, nv.getMatKhau());
+                    ps.setString(8, "quanly" + nv.getMaNV());
+                    ps.setString(9, "qlpass");
+                    ps.setLong(10, 1000000);
                 }
                 case "Lễ tân" -> {
-                    ps.setString(7, "letan" + nv.getMaNV());
-                    ps.setString(8, nv.getMatKhau());
+                    ps.setString(8, "letan" + nv.getMaNV());
+                    ps.setString(9, "ltpass");
+                    ps.setLong(10, 750000);
                 }
                 case "Tạp Vụ" -> {
-                    ps.setNull(7, java.sql.Types.VARCHAR);
                     ps.setNull(8, java.sql.Types.VARCHAR);
+                    ps.setNull(9, java.sql.Types.VARCHAR);
+                    ps.setLong(10, 500000);
                 }
 
             }
-            ps.setString(9, nv.getSDT());
-            ps.setLong(10, nv.getLuongCB());
 
             // Thực thi câu lệnh SQL
             return ps.executeUpdate() > 0;

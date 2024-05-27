@@ -37,6 +37,8 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         HoaDonLb = new javax.swing.JLabel();
         ChamCongLb = new javax.swing.JLabel();
         DangXuatLb = new javax.swing.JLabel();
+        phongLb = new javax.swing.JLabel();
+        luongLb = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -109,18 +111,30 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
             }
         });
 
+        phongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        phongLb.setForeground(new java.awt.Color(255, 255, 255));
+        phongLb.setText("Phòng");
+        phongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                phongLbMouseClicked(evt);
+            }
+        });
+
+        luongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        luongLb.setForeground(new java.awt.Color(255, 255, 255));
+        luongLb.setText("Lương");
+        luongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                luongLbMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
         MenuPanelLayout.setHorizontalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(KhachHangLb))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(NhanVienLb))
@@ -138,10 +152,20 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
                         .addComponent(HoaDonLb))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(ChamCongLb))
+                        .addComponent(DangXuatLb))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(DangXuatLb)))
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(phongLb)
+                            .addComponent(KhachHangLb)))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(luongLb)
+                            .addComponent(ChamCongLb))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         MenuPanelLayout.setVerticalGroup(
@@ -149,23 +173,27 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addComponent(phongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KhachHangLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NhanVienLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HopDongLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KhuyenMaiLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TrangBiLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(HoaDonLb)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ChamCongLb)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(luongLb)
+                .addGap(30, 30, 30)
                 .addComponent(DangXuatLb)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -224,6 +252,14 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DangXuatLbMouseClicked
 
+    private void phongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_phongLbMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phongLbMouseClicked
+
+    private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_luongLbMouseClicked
+
 
     public static void main(NhanVienModel args) {
         currentUser = args;
@@ -259,6 +295,8 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel luongLb;
+    private javax.swing.JLabel phongLb;
     // End of variables declaration//GEN-END:variables
 
 }

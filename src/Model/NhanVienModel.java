@@ -20,6 +20,18 @@ public class NhanVienModel {
     public NhanVienModel(){
     }
 
+    public NhanVienModel(String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, String LoaiNV) {
+        this.TenNV = TenNV;
+        this.CCCD = CCCD;
+        this.NgaySinh = NgaySinh;
+        this.GioiTinh = GioiTinh;
+        this.DiaChi = DiaChi;
+        this.SDT = SDT;
+        this.LoaiNV = LoaiNV;
+    }
+
+    
+    
     public NhanVienModel(String TenNV, String CCCD, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, String LoaiNV, String TaiKhoan, String MatKhau, long LuongCB) {
         this.TenNV = TenNV;
         this.CCCD = CCCD;
