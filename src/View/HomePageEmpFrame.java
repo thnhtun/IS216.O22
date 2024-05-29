@@ -1,24 +1,21 @@
-
 package View;
 
 import DAO.TrangChuDAO;
 import Model.NhanVienModel;
 import javax.swing.JOptionPane;
 
-
-
 public class HomePageEmpFrame extends javax.swing.JFrame {
-    
+
     private static NhanVienModel currentUser;
-    
-    
 
     public HomePageEmpFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-     
- 
+        
+
     }
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -84,6 +81,11 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
         KhuyenMaiLb.setText("Khuyến mãi");
+        KhuyenMaiLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                KhuyenMaiLbMouseClicked(evt);
+            }
+        });
 
         TrangBiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         TrangBiLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,6 +238,7 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_NhanVienLbMouseClicked
 
     private void ChamCongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChamCongLbMouseClicked
+        System.out.println(currentUser.toString());
         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
             dispose();
             ChamCongFrame.main(currentUser);
@@ -252,6 +255,7 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DangXuatLbMouseClicked
 
+
     private void phongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_phongLbMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_phongLbMouseClicked
@@ -260,6 +264,15 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_luongLbMouseClicked
 
+    private void KhuyenMaiLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhuyenMaiLbMouseClicked
+        // TODO add your handling code here:
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            KhuyenMaiFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_KhuyenMaiLbMouseClicked
 
     public static void main(NhanVienModel args) {
         currentUser = args;
@@ -275,7 +288,7 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomePageEmpFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(() -> {
             new HomePageEmpFrame().setVisible(true);
         });

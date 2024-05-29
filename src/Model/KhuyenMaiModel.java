@@ -25,6 +25,15 @@ public class KhuyenMaiModel {
         this.PhanTramKM = PhanTramKM;
     }
 
+    public KhuyenMaiModel(String TenKM, String MoTaKM, LocalDate NgayBatDau, LocalDate NgayKetThuc, double PhanTramKM){
+        this.TenKM = TenKM;
+        this.MoTaKM = MoTaKM;
+        this.NgayBatDau = NgayBatDau;
+        this.NgayKetThuc = NgayKetThuc;
+        this.PhanTramKM = PhanTramKM;
+    }
+
+    
     public int getMaKM() {
         return MaKM;
     }
