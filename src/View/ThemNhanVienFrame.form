@@ -95,13 +95,10 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel10" min="-2" pref="69" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel10" min="-2" pref="69" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -522,6 +519,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="H&#x1ee3;p &#x111;&#x1ed3;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HopDongLbMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="KhuyenMaiLb">
               <Properties>
@@ -533,6 +533,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n m&#xe3;i"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="KhuyenMaiLbMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="TrangBiLb">
               <Properties>

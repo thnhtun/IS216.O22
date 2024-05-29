@@ -4,7 +4,7 @@ package Model;
 import java.time.LocalDateTime;
 
 
-public class HopDongThuePhongModel {
+public class HopDongModel {
     private int MaHopDong;
     private int MaKH;  
     private LocalDateTime NgayLapHopDong;
@@ -15,11 +15,24 @@ public class HopDongThuePhongModel {
     private int SoLuongTreEm;
     private double TriGiaHopDong; 
     
-    public HopDongThuePhongModel(){
+    public HopDongModel(){
     
     }
+
+    public HopDongModel(int MaKH, LocalDateTime NgayLapHopDong, LocalDateTime TGNhanPhong, LocalDateTime TGTraPhong, String TinhTrangHD, int SoLuongNguoiLon, int SoLuongTreEm, double TriGiaHopDong) {
+        this.MaKH = MaKH;
+        this.NgayLapHopDong = NgayLapHopDong;
+        this.TGNhanPhong = TGNhanPhong;
+        this.TGTraPhong = TGTraPhong;
+        this.TinhTrangHD = TinhTrangHD;
+        this.SoLuongNguoiLon = SoLuongNguoiLon;
+        this.SoLuongTreEm = SoLuongTreEm;
+        this.TriGiaHopDong = TriGiaHopDong;
+    }
     
-    public HopDongThuePhongModel(int MaHopDong, int MaKH, LocalDateTime NgayLapHopDong, LocalDateTime TGNhanPhong, 
+    
+    
+    public HopDongModel(int MaHopDong, int MaKH, LocalDateTime NgayLapHopDong, LocalDateTime TGNhanPhong, 
                             LocalDateTime TGTraPhong, String TinhTrangHD, int SoLuongNguoiLon, int SoLuongTreEm, double TriGiaHopDong){
         this.MaHopDong = MaHopDong;
         this.MaKH = MaKH;

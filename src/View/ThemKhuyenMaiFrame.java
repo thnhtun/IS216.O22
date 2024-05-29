@@ -224,6 +224,8 @@ public class ThemKhuyenMaiFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Phần trăm khuyến mãi");
 
+        TenKhuyenMaijTextField.setBackground(new java.awt.Color(255, 255, 255));
+
         MoTaKMjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MoTaKMjTextFieldActionPerformed(evt);
@@ -277,12 +279,9 @@ public class ThemKhuyenMaiFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(NgayBatDaujCalendarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NgayBatDaujCalendarComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(NgayKetThucjCalendarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8))
@@ -393,16 +392,12 @@ public class ThemKhuyenMaiFrame extends javax.swing.JFrame {
         Double PhanTramKM = Double.parseDouble(this.PhanTramKMjTextField.getText());
         KhuyenMaiModel KM = new KhuyenMaiModel(TenKM, MoTaKM, sqldate1.toLocalDate(), sqldate2.toLocalDate(), PhanTramKM);
         KhuyenMaiDAO kmdao = new KhuyenMaiDAO();
-        try {
-            if (kmdao.ThemKM(KM)) {
-                JOptionPane.showMessageDialog(rootPane, "Thêm thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
-                dispose();
-                KhuyenMaiFrame.main(currentUser);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Thêm không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        if (kmdao.ThemKM(KM)) {
+            JOptionPane.showMessageDialog(rootPane, "Thêm thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+            dispose();
+            KhuyenMaiFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Thêm không thành công. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
         this.TenKhuyenMaijTextField.setText("");
         this.MoTaKMjTextField.setText("");

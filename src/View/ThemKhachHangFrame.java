@@ -11,10 +11,10 @@ import javax.swing.table.DefaultTableModel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class ThemKhachHangFrame extends javax.swing.JFrame {
+
     private static NhanVienModel currentUser;
-    
+
     private static final Logger LOGGER = Logger.getLogger(ThemKhachHangFrame.class.getName());
 
     public ThemKhachHangFrame() {
@@ -170,10 +170,20 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
         HopDongLb.setText("Hợp đồng");
+        HopDongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HopDongLbMouseClicked(evt);
+            }
+        });
 
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
         KhuyenMaiLb.setText("Khuyến mãi");
+        KhuyenMaiLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                KhuyenMaiLbMouseClicked(evt);
+            }
+        });
 
         TrangBiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         TrangBiLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -384,7 +394,7 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void themjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themjButtonActionPerformed
         String hoTen = this.hoTenjTextField.getText();
         String cccd = this.CCCDjTextField.getText();
@@ -392,7 +402,7 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         String gioiTinh = (String) this.gioiTinhjComboBox.getSelectedItem();
         String diaChi = this.diaChijTextField.getText();
         String sdt = this.SDTjTextField.getText();
-        KhachHangModel KH = new KhachHangModel(hoTen, cccd, sqldate.toLocalDate(),  gioiTinh, diaChi, sdt, 0);
+        KhachHangModel KH = new KhachHangModel(hoTen, cccd, sqldate.toLocalDate(), gioiTinh, diaChi, sdt, 0);
         KhachHangDAO khDAO = new KhachHangDAO();
         try {
             if (khDAO.ThemKH(KH)) {
@@ -434,7 +444,7 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
             dispose();
             NhanVienFrame.main(currentUser);
-        } else { 
+        } else {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_NhanVienLbMouseClicked
@@ -454,12 +464,33 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
 
     private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
         // TODO add your handling code here:
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            LuongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_luongLbMouseClicked
 
+    private void HopDongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HopDongLbMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        HopDongFrame.main(currentUser);
+    }//GEN-LAST:event_HopDongLbMouseClicked
+
+    private void KhuyenMaiLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhuyenMaiLbMouseClicked
+        // TODO add your handling code here:
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            KhuyenMaiFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_KhuyenMaiLbMouseClicked
 
     public static void main(NhanVienModel args) {
         currentUser = args;
-        
+
         currentUser.setMaNV(args.getMaNV());
 
         try {
@@ -472,13 +503,11 @@ public class ThemKhachHangFrame extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomePageEmpFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(() -> {
             new ThemKhachHangFrame().setVisible(true);
         });
-        
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

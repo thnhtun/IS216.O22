@@ -11,11 +11,8 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
     public HomePageEmpFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
 
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,6 +74,11 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
         HopDongLb.setText("Hợp đồng");
+        HopDongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HopDongLbMouseClicked(evt);
+            }
+        });
 
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,7 +263,7 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_phongLbMouseClicked
 
     private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
-         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
             dispose();
             LuongFrame.main(currentUser);
         } else {
@@ -278,6 +280,12 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_KhuyenMaiLbMouseClicked
+
+    private void HopDongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HopDongLbMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        HopDongFrame.main(currentUser);
+    }//GEN-LAST:event_HopDongLbMouseClicked
 
     public static void main(NhanVienModel args) {
         currentUser = args;

@@ -228,4 +228,44 @@ public class KhachHangDAO {
         }
         return DS_KH;
     }
+    
+    public static int demSoHopDong(int maKH) throws SQLException{
+        
+        // Tạo đối tượng kết nối 
+        Connection con = null;
+        con = JDBCUtil.getConnection();
+        
+        int sl = 0;
+        
+        String sql = null;
+        
+        sql = "SELECT SOHOPDONG FROM KHACHHANG WHERE MAKH = ?";
+        
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+        ps.setInt(1, maKH);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            sl = rs.getInt(1);
+        }
+
+        return sl;
+    }
+    
+    
+    public static boolean capNhatSoHopDong(int maKH, int sl) throws SQLException{
+        Connection con = null;
+        try {
+            con = JDBCUtil.getConnection();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        String sql = "UPDATE KHACHHANG SET SOHOPDONG = ? WHERE MAKH = ?";
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+        ps.setInt(1, sl);
+        ps.setInt(2, maKH);
+               
+        return ps.executeUpdate() > 0;        
+    }
 }

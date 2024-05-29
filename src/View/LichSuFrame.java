@@ -1,27 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
-
 
 import Model.NhanVienModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author phuch
- */
 public class LichSuFrame extends javax.swing.JFrame {
-    
-   private static NhanVienModel currentUser;
+
+    private static NhanVienModel currentUser;
     private DefaultTableModel TableLS;
+
     public LichSuFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-         TableLS = (DefaultTableModel) LichSuJTable.getModel();
+        TableLS = (DefaultTableModel) LichSuJTable.getModel();
     }
-  /*  public void LoadDanhSachCC() {
+
+    /*  public void LoadDanhSachCC() {
         DefaultTableModel tableKM = (DefaultTableModel) LichSuJTable.getModel();
         DSNV = NhanVienDAO.getDSNhanVien();
         tableKM.setRowCount(0);
@@ -196,9 +189,6 @@ public class LichSuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

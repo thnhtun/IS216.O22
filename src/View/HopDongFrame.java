@@ -1,12 +1,13 @@
 
 package View;
 
+import DAO.HopDongDAO;
 import DAO.KhachHangDAO;
 import DAO.TrangChuDAO;
+import Model.HopDongModel;
 import Model.KhachHangModel;
 import Model.NhanVienModel;
 import java.awt.Component;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,12 +17,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
-public class KhachHangFrame extends javax.swing.JFrame {
+public class HopDongFrame extends javax.swing.JFrame {
     
     private static NhanVienModel currentUser;
     
@@ -36,60 +34,57 @@ public class KhachHangFrame extends javax.swing.JFrame {
     ArrayList<KhachHangModel> DS_KH;
     int current = 0;
 
-    public KhachHangFrame() {
+    public HopDongFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
      
-        addSVG(); // Thêm ảnh SVG vào Frame
         khoiTaoBang(); // Gọi phương thức khởi tạo bảng
         inDanhSach(); // Gọi phương thức in danh sách ban đầu nếu cần thiết
     }
 
-    private void addSVG(){
-         
-    }
     
     public void khoiTaoBang() {
         defaultTableModel = new DefaultTableModel();
     
+        defaultTableModel.addColumn("Mã Hợp Đồng");
         defaultTableModel.addColumn("Mã KH");
-        defaultTableModel.addColumn("Họ tên");
-        defaultTableModel.addColumn("CCCD");
-        defaultTableModel.addColumn("Ngày sinh");
-        defaultTableModel.addColumn("Giới tính");
-        defaultTableModel.addColumn("Địa chỉ");
-        defaultTableModel.addColumn("SĐT");
-        defaultTableModel.addColumn("SHĐ");
+        defaultTableModel.addColumn("Ngày Lập Hợp Đồng");
+        defaultTableModel.addColumn("Thời Gian Nhận Phòng");
+        defaultTableModel.addColumn("Thời Gian Trả Phòng");
+        defaultTableModel.addColumn("Tình Trạng HĐ");
+        defaultTableModel.addColumn("SL Người Lớn");
+        defaultTableModel.addColumn("SL Trẻ Em");
+        defaultTableModel.addColumn("Trị Giá HĐ");
         
         
-        danhSachKHTable.setModel(defaultTableModel);
+        danhSachHopDongTable.setModel(defaultTableModel);
     }
 
 
     public void inDanhSach() {
-        // Tạo đối tượng danh sách khách hàng
-        ArrayList<KhachHangModel> DS_KH = KhachHangDAO.getDSKhachHang();
+        // Tạo đối tượng danh sách hợp đồng
+        ArrayList<HopDongModel> DS_HopDong = HopDongDAO.getDSHopDong();
 
         // Xóa tất cả các hàng hiện có trong bảng
         defaultTableModel.setRowCount(0);
 
         // Thêm dữ liệu vào bảng
-        for (KhachHangModel khachHang : DS_KH) {
+        for (HopDongModel hopDong : DS_HopDong) {
             defaultTableModel.addRow(new Object[]{
-                khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getCCCD(),
-                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
-                khachHang.getSDT(), khachHang.getSoHopDong()
+                hopDong.getMaHopDong(), hopDong.getMaKH(), hopDong.getNgayLapHopDong(),
+                hopDong.getTGNhanPhong(), hopDong.getTGTraPhong(), hopDong.getTinhTrangHD(),
+                hopDong.getSoLuongNguoiLon(), hopDong.getSoLuongTreEm(), hopDong.getTriGiaHopDong()
             });
         }
         
         for (int i = 0; i < defaultTableModel.getColumnCount(); i++) {
-            TableColumn column = danhSachKHTable.getColumnModel().getColumn(i);
+            TableColumn column = danhSachHopDongTable.getColumnModel().getColumn(i);
             int maxWidth = 0;
 
             // Tính toán chiều rộng dựa trên nội dung lớn nhất trong cột
-            for (int row = 0; row < danhSachKHTable.getRowCount(); row++) {
-                TableCellRenderer cellRenderer = danhSachKHTable.getCellRenderer(row, i);
-                Component c = danhSachKHTable.prepareRenderer(cellRenderer, row, i);
+            for (int row = 0; row < danhSachHopDongTable.getRowCount(); row++) {
+                TableCellRenderer cellRenderer = danhSachHopDongTable.getCellRenderer(row, i);
+                Component c = danhSachHopDongTable.prepareRenderer(cellRenderer, row, i);
                 maxWidth = Math.max(c.getPreferredSize().width, maxWidth);
             }
 
@@ -99,7 +94,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
     }
 
     
-    public void TraCuuKH() {
+    public void TraCuuHopDong() {
         // Lấy tùy chọn tìm kiếm và đầu vào từ người dùng
         String option = (String) this.timTheoComboBox.getSelectedItem();
         String input = this.nhapjTextField.getText().toLowerCase();
@@ -107,24 +102,38 @@ public class KhachHangFrame extends javax.swing.JFrame {
         // Xóa tất cả các hàng trong bảng
         defaultTableModel.setRowCount(0);
 
-        // Tạo danh sách khách hàng để chứa kết quả tìm kiếm
-        ArrayList<KhachHangModel> DS_KH = KhachHangDAO.TimKH(option, input);
+        // Tạo danh sách Hợp Đồng để chứa kết quả tìm kiếm
+        ArrayList<HopDongModel> DS_HopDong = HopDongDAO.TimHopDong(option, input);
 
-        // Thêm kết quả tìm kiếm vào bảng
-        for (KhachHangModel khachHang : DS_KH) {
+         // Thêm dữ liệu vào bảng
+        for (HopDongModel hopDong : DS_HopDong) {
             defaultTableModel.addRow(new Object[]{
-                khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getCCCD(),
-                khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getDiaChi(),
-                khachHang.getSDT(), khachHang.getSoHopDong()
+                hopDong.getMaHopDong(), hopDong.getMaKH(), hopDong.getNgayLapHopDong(),
+                hopDong.getTGNhanPhong(), hopDong.getTGTraPhong(), hopDong.getTinhTrangHD(),
+                hopDong.getSoLuongNguoiLon(), hopDong.getSoLuongTreEm(), hopDong.getTriGiaHopDong()
             });
+        }
+        
+        for (int i = 0; i < defaultTableModel.getColumnCount(); i++) {
+            TableColumn column = danhSachHopDongTable.getColumnModel().getColumn(i);
+            int maxWidth = 0;
+
+            // Tính toán chiều rộng dựa trên nội dung lớn nhất trong cột
+            for (int row = 0; row < danhSachHopDongTable.getRowCount(); row++) {
+                TableCellRenderer cellRenderer = danhSachHopDongTable.getCellRenderer(row, i);
+                Component c = danhSachHopDongTable.prepareRenderer(cellRenderer, row, i);
+                maxWidth = Math.max(c.getPreferredSize().width, maxWidth);
+            }
+
+            // Thiết lập chiều rộng cột + padding
+            column.setPreferredWidth(maxWidth + 30);
         }
 
         // Hiển thị thông báo nếu không tìm thấy kết quả
-        if (DS_KH.size() <= 0) {
+        if (DS_HopDong.size() <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Thông tin không tồn tại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 
     
     @SuppressWarnings("unchecked")
@@ -135,7 +144,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        danhSachKHTable = new javax.swing.JTable();
+        danhSachHopDongTable = new javax.swing.JTable();
         timTheoComboBox = new javax.swing.JComboBox<>();
         TieudeTK = new javax.swing.JLabel();
         nhapjTextField = new javax.swing.JTextField();
@@ -143,7 +152,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
         traCuujButton = new javax.swing.JButton();
         suajButton = new javax.swing.JButton();
         xoajButton = new javax.swing.JButton();
-        themjButton = new javax.swing.JButton();
         MenuPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         KhachHangLb = new javax.swing.JLabel();
@@ -168,30 +176,30 @@ public class KhachHangFrame extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(24, 24, 68));
-        jLabel8.setText("KHÁCH HÀNG");
+        jLabel8.setText("HỢP ĐỒNG");
 
-        danhSachKHTable.setBackground(new java.awt.Color(255, 255, 255));
-        danhSachKHTable.setForeground(new java.awt.Color(0, 0, 0));
-        danhSachKHTable.setModel(new javax.swing.table.DefaultTableModel(
+        danhSachHopDongTable.setBackground(new java.awt.Color(255, 255, 255));
+        danhSachHopDongTable.setForeground(new java.awt.Color(0, 0, 0));
+        danhSachHopDongTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã KH", "Họ tên", "CCCD", "Ngày sinh", "Giới tính", "Địa chỉ", "SĐT", "Số HĐ"
+                "Mã Hợp Đồng", "Mã KH", "Ngày Lập Hợp Đồng", "Thời Gian Nhận Phòng", "Thời Gian Trả Phòng", "Tình Trạng HĐ", "SL Người Lớn", "SL Trẻ Em", "Trị Giá HĐ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(danhSachKHTable);
+        jScrollPane1.setViewportView(danhSachHopDongTable);
 
         timTheoComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        timTheoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã KH", "Họ tên", "CCCD", "SĐT", " " }));
+        timTheoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Hợp Đồng", "Mã KH", "Tình Trạng HĐ" }));
         timTheoComboBox.setPreferredSize(new java.awt.Dimension(100, 40));
 
         TieudeTK.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -235,16 +243,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
             }
         });
 
-        themjButton.setBackground(new java.awt.Color(24, 24, 68));
-        themjButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        themjButton.setForeground(new java.awt.Color(255, 255, 255));
-        themjButton.setText("Thêm");
-        themjButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themjButtonActionPerformed(evt);
-            }
-        });
-
         MenuPanel.setBackground(new java.awt.Color(24, 24, 68));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
@@ -272,11 +270,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
         HopDongLb.setText("Hợp đồng");
-        HopDongLb.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HopDongLbMouseClicked(evt);
-            }
-        });
 
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -405,8 +398,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(themjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
                                 .addComponent(xoajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
                                 .addComponent(suajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -414,12 +405,12 @@ public class KhachHangFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(TieudeTK)
-                                        .addComponent(timTheoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(32, 32, 32)
+                                        .addComponent(timTheoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(45, 45, 45)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(nhapjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
+                                            .addGap(45, 45, 45)
                                             .addComponent(traCuujButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -444,8 +435,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(suajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xoajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(themjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xoajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
             .addComponent(MenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -463,32 +453,41 @@ public class KhachHangFrame extends javax.swing.JFrame {
         if (input.equals("")) {
             inDanhSach();
         } else {
-            TraCuuKH();
+            TraCuuHopDong();
         }
     }//GEN-LAST:event_traCuujButtonActionPerformed
 
-    private void themjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themjButtonActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        ThemKhachHangFrame.main(currentUser);
-    }//GEN-LAST:event_themjButtonActionPerformed
-
     private void xoajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoajButtonActionPerformed
         // TODO add your handling code here:
-        int removeIndex = this.danhSachKHTable.getSelectedRow();
+        int removeIndex = this.danhSachHopDongTable.getSelectedRow();
         try {
             if (removeIndex == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dữ liệu cần xoá!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            } else if (this.danhSachKHTable.getRowCount() == 0) {
+            } else if (this.danhSachHopDongTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
-                Object maKHObject = this.danhSachKHTable.getValueAt(removeIndex, 0);
+                Object maHopDongObject = this.danhSachHopDongTable.getValueAt(removeIndex, 0);
+                Object maKHObject = this.danhSachHopDongTable.getValueAt(removeIndex, 1);
+                
+                int maHopDong = (Integer) maHopDongObject;
                 int maKH = (Integer) maKHObject;
+                
                 
                 int choice = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa không?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
                 if (choice == JOptionPane.OK_OPTION) {
-                    // Xử lý xóa ở đây
-                    int row = KhachHangDAO.XoaKH(maKH);
+                    // Xử lý xóa hợp đồng ở đây
+                    int row = HopDongDAO.XoaHopDong(maHopDong);
+                    
+                    // Kiểm tra nếu số lượng hợp đồng bé hơn 1 thì sẽ xóa luôn thông tin khách hàng đó 
+                    int sl = KhachHangDAO.demSoHopDong(maKH);
+                    if (sl <= 1){
+                        KhachHangDAO.XoaKH(maKH);
+                    }
+                    else{
+                        sl = sl - 1;
+                        KhachHangDAO.capNhatSoHopDong(maKH, sl);
+                    }
+          
                     if (row > 0) {
                         JOptionPane.showMessageDialog(rootPane, "Xoá thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
                     } else {
@@ -501,29 +500,26 @@ public class KhachHangFrame extends javax.swing.JFrame {
 
                 inDanhSach();
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(rootPane, "Error, ràng buộc", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Error!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_xoajButtonActionPerformed
 
     private void suajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suajButtonActionPerformed
-        int selectedIndex = this.danhSachKHTable.getSelectedRow();
+        int selectedIndex = this.danhSachHopDongTable.getSelectedRow();
 
         try {
             if (selectedIndex == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn dữ liệu cần sửa!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            } else if (this.danhSachKHTable.getRowCount() == 0) {
+            } else if (this.danhSachHopDongTable.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Dữ liệu trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             } else {
-                Object maKHObject = this.danhSachKHTable.getValueAt(selectedIndex, 0);
-                int maKH = (Integer) maKHObject;
+                Object maHopDongObject = this.danhSachHopDongTable.getValueAt(selectedIndex, 0);
+                int maHopDong = (Integer) maHopDongObject;
                 dispose();
-                SuaKhachHangFrame.main(currentUser, maKH);
+                SuaHopDongFrame.main(currentUser, maHopDong);
 
-//                SuaKhachHangFrame suaKhachHangFrame = new SuaKhachHangFrame(maKH);
-//                //suaKhachHangFrame.setCurrentUser(currentUser); // giả định rằng bạn có phương thức để đặt người dùng hiện tại
-//                suaKhachHangFrame.setVisible(true);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -573,12 +569,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_luongLbMouseClicked
 
-    private void HopDongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HopDongLbMouseClicked
-        // TODO add your handling code here:
-        dispose();
-        HopDongFrame.main(currentUser);
-    }//GEN-LAST:event_HopDongLbMouseClicked
-
     private void KhuyenMaiLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhuyenMaiLbMouseClicked
         // TODO add your handling code here:
         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
@@ -611,7 +601,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new KhachHangFrame().setVisible(true);
+            new HopDongFrame().setVisible(true);
         });
     }
 
@@ -626,7 +616,7 @@ public class KhachHangFrame extends javax.swing.JFrame {
     private javax.swing.JLabel NhanVienLb;
     private javax.swing.JLabel TieudeTK;
     private javax.swing.JLabel TrangBiLb;
-    private javax.swing.JTable danhSachKHTable;
+    private javax.swing.JTable danhSachHopDongTable;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -637,7 +627,6 @@ public class KhachHangFrame extends javax.swing.JFrame {
     private javax.swing.JTextField nhapjTextField;
     private javax.swing.JLabel phongLb;
     private javax.swing.JButton suajButton;
-    private javax.swing.JButton themjButton;
     private javax.swing.JComboBox<String> timTheoComboBox;
     private javax.swing.JButton traCuujButton;
     private javax.swing.JButton xoajButton;

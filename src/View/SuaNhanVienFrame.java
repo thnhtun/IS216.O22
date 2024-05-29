@@ -209,10 +209,20 @@ public class SuaNhanVienFrame extends javax.swing.JFrame {
         HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
         HopDongLb.setText("Hợp đồng");
+        HopDongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HopDongLbMouseClicked(evt);
+            }
+        });
 
         KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
         KhuyenMaiLb.setText("Khuyến mãi");
+        KhuyenMaiLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                KhuyenMaiLbMouseClicked(evt);
+            }
+        });
 
         TrangBiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         TrangBiLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -530,7 +540,29 @@ public class SuaNhanVienFrame extends javax.swing.JFrame {
 
     private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
         // TODO add your handling code here:
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            LuongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_luongLbMouseClicked
+
+    private void HopDongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HopDongLbMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        HopDongFrame.main(currentUser);
+    }//GEN-LAST:event_HopDongLbMouseClicked
+
+    private void KhuyenMaiLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhuyenMaiLbMouseClicked
+        // TODO add your handling code here:
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            KhuyenMaiFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_KhuyenMaiLbMouseClicked
 
     public static void main(NhanVienModel args, int maNV) {
         currentUser = args;
