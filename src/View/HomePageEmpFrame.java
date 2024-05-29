@@ -257,7 +257,12 @@ public class HomePageEmpFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_phongLbMouseClicked
 
     private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
-        // TODO add your handling code here:
+         if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            LuongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_luongLbMouseClicked
 
 

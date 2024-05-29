@@ -63,45 +63,34 @@ public class NhanVienDAO {
     }
     
     // lấy danh sách nhân viên có trong cơ sở dữ liệu
-    public static ArrayList<NhanVienModel> getDSNhanVien() throws SQLException {
-        
-        // Tạo cái ArrayList lưu danh sách nhân viên
+    public static ArrayList<NhanVienModel> getDSNhanVien() {
         ArrayList<NhanVienModel> DS_NV = new ArrayList<>();
+        String sql = "SELECT * FROM NHANVIEN";
         try {
-            
-            // Tạo câu truy vấn 
-            String sql = "SELECT * FROM NHANVIEN ORDER BY MANV ASC";
-            
-            // Tạo đối tượng connection
-            Connection conn = null;
-            conn = JDBCUtil.getConnection();
-            
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Connection con = null;
+            con = JDBCUtil.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
-            DS_NV.clear();
-            
             while (rs.next()) {
-                int MaNV = rs.getInt(1);
-                String TenNV = rs.getString(2);
-                String CCCD = rs.getString(3);
-                LocalDate NgaySinh = rs.getDate(4).toLocalDate();
-                String GioiTinh = rs.getString(5);
-                String DiaChi = rs.getString(6); 
-                String SDT = rs.getString(7);
-                String LoaiNV = rs.getString(8);
-                String TaiKhoan = rs.getString(9);
-                String MatKhau = rs.getString(10);
-                long LuongCB = rs.getLong(11);
-                
-                
-                // gọi contructer
-                NhanVienModel kh = new NhanVienModel(MaNV, TenNV, CCCD, NgaySinh, GioiTinh, DiaChi, SDT, LoaiNV, TaiKhoan, MatKhau, LuongCB);
-                DS_NV.add(kh);
+                LocalDate NgaySinh = rs.getObject("NgaySinh", LocalDate.class);
+                DS_NV.add(new NhanVienModel(
+                        rs.getInt("MaNV"),
+                        rs.getString("TenNV"),
+                        rs.getString("CCCD"),
+                        NgaySinh,
+                        rs.getString("GioiTinh"),
+                        rs.getString("DiaChi"),
+                        rs.getString("SDT"),
+                        rs.getString("LoaiNV"),
+                        rs.getString("TaiKhoan"),
+                        rs.getString("MatKhau"),
+                        rs.getLong("LuongCB")
+                ));
+
             }
-            conn.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return DS_NV;
     }
