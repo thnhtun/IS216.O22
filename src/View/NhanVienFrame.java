@@ -18,7 +18,7 @@ import javax.swing.table.TableColumn;
 
 
 public class NhanVienFrame extends javax.swing.JFrame {
-    
+        
     private static NhanVienModel currentUser;
     
     private DefaultTableModel defaultTableModel = new DefaultTableModel(){
@@ -62,8 +62,12 @@ public class NhanVienFrame extends javax.swing.JFrame {
 
 
     public void inDanhSach() {
+        try {
         // Tạo đối tượng danh sách khách hàng
         DS_NV = NhanVienDAO.getDSNhanVien();
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         // Xóa tất cả các hàng hiện có trong bảng
         defaultTableModel.setRowCount(0);
