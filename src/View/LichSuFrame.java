@@ -4,8 +4,13 @@
  */
 package View;
 
-
+import DAO.LichSuDAO;
+import DAO.TrangChuDAO;
+import Model.LichSuModel;
 import Model.NhanVienModel;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,19 +21,31 @@ public class LichSuFrame extends javax.swing.JFrame {
     
    private static NhanVienModel currentUser;
     private DefaultTableModel TableLS;
+    ArrayList<LichSuModel> DS_LichSu= new ArrayList<LichSuModel>();
+    
     public LichSuFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
          TableLS = (DefaultTableModel) LichSuJTable.getModel();
+         LoadDSLichSu();
+         
     }
-  /*  public void LoadDanhSachCC() {
-        DefaultTableModel tableKM = (DefaultTableModel) LichSuJTable.getModel();
-        DSNV = NhanVienDAO.getDSNhanVien();
-        tableKM.setRowCount(0);
-        for (NhanVienModel km : DSNV) {
-            tableKM.addRow(new Object[]{km.getMaNV(), km.getTenNV(), km.getNgaySinh(), km.getCCCD(), km.getGioiTinh(), km.getDiaChi(), km.getLoaiNV()});
+  public void LoadDSLichSu() {
+        DS_LichSu = LichSuDAO.getDSLS();
+        DefaultTableModel tblHienThi = (DefaultTableModel) this.LichSuJTable.getModel();
+        tblHienThi.setRowCount(0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        for (LichSuModel lichsu : DS_LichSu) {
+            tblHienThi.addRow(new Object[]{
+                lichsu.gettGNhanPhong().format(formatter),
+                lichsu.gettGTraPhong().format(formatter),
+                lichsu.getTongTien(),
+            });
         }
-    }*/
+        if (DS_LichSu.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Không tìm thấy dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,89 +55,130 @@ public class LichSuFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        MenuPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        KhachHangLb = new javax.swing.JLabel();
+        NhanVienLb = new javax.swing.JLabel();
+        HopDongLb = new javax.swing.JLabel();
+        DangXuatLb = new javax.swing.JLabel();
+        KhuyenMaiLb = new javax.swing.JLabel();
+        TrangBiLb = new javax.swing.JLabel();
+        HoaDonLb = new javax.swing.JLabel();
+        ChamCongLb = new javax.swing.JLabel();
+        phongLb = new javax.swing.JLabel();
+        luongLb = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         LichSuJTable = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        NhapCCCDTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        TraCuuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        MenuPanel.setBackground(new java.awt.Color(24, 24, 68));
 
-        jButton1.setText("Đặt Phòng ");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(220, 220, 46));
+        jLabel3.setText("BRIGHT STAR");
 
-        jButton2.setText("Lịch Sử Đặt Phòng");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        KhachHangLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        KhachHangLb.setForeground(new java.awt.Color(255, 255, 255));
+        KhachHangLb.setText("Khách hàng");
+        KhachHangLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                KhachHangLbMouseClicked(evt);
             }
         });
 
-        jButton3.setText("Khuyến Mãi");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        NhanVienLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        NhanVienLb.setForeground(new java.awt.Color(255, 255, 255));
+        NhanVienLb.setText("Nhân viên");
+        NhanVienLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NhanVienLbMouseClicked(evt);
             }
         });
 
-        jButton4.setText("Chính Sách");
+        HopDongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        HopDongLb.setForeground(new java.awt.Color(255, 255, 255));
+        HopDongLb.setText("Hợp đồng");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(27, 27, 27)
-                .addComponent(jButton4)
-                .addContainerGap(229, Short.MAX_VALUE))
-        );
+        DangXuatLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        DangXuatLb.setForeground(new java.awt.Color(255, 255, 255));
+        DangXuatLb.setText("Đăng xuất");
+        DangXuatLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DangXuatLbMouseClicked(evt);
+            }
+        });
+
+        KhuyenMaiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        KhuyenMaiLb.setForeground(new java.awt.Color(255, 255, 255));
+        KhuyenMaiLb.setText("Khuyến mãi");
+
+        TrangBiLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        TrangBiLb.setForeground(new java.awt.Color(255, 255, 255));
+        TrangBiLb.setText("Trang bị");
+
+        HoaDonLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        HoaDonLb.setForeground(new java.awt.Color(255, 255, 255));
+        HoaDonLb.setText("Hoá đơn");
+
+        ChamCongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        ChamCongLb.setForeground(new java.awt.Color(255, 255, 255));
+        ChamCongLb.setText("Chấm công");
+        ChamCongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChamCongLbMouseClicked(evt);
+            }
+        });
+
+        phongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        phongLb.setForeground(new java.awt.Color(255, 255, 255));
+        phongLb.setText("Phòng");
+        phongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                phongLbMouseClicked(evt);
+            }
+        });
+
+        luongLb.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        luongLb.setForeground(new java.awt.Color(255, 255, 255));
+        luongLb.setText("Lương");
+        luongLb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                luongLbMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Xem lịch sử đặt phòng ");
 
         LichSuJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Tên KH", "Ngày nhận phòng ", "Ngày trả phòng ", "Trị giá thuê phòng "
+                "Ngày nhận phòng ", "Ngày trả phòng ", "Trị giá thuê phòng "
             }
         ));
         jScrollPane1.setViewportView(LichSuJTable);
 
         jLabel2.setText("* Nhập CCCD");
 
-        jButton5.setText("Tra cứu ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        TraCuuButton.setText("Tra cứu ");
+        TraCuuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TraCuuButtonMouseClicked(evt);
+            }
+        });
+        TraCuuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                TraCuuButtonActionPerformed(evt);
             }
         });
 
@@ -140,9 +198,9 @@ public class LichSuFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NhapCCCDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TraCuuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -158,11 +216,65 @@ public class LichSuFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(NhapCCCDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TraCuuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
+        MenuPanel.setLayout(MenuPanelLayout);
+        MenuPanelLayout.setHorizontalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NhanVienLb)
+                            .addComponent(HopDongLb)
+                            .addComponent(KhuyenMaiLb)
+                            .addComponent(TrangBiLb)
+                            .addComponent(HoaDonLb)
+                            .addComponent(DangXuatLb)
+                            .addComponent(phongLb)
+                            .addComponent(KhachHangLb)
+                            .addComponent(luongLb)
+                            .addComponent(ChamCongLb))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        MenuPanelLayout.setVerticalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(phongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(KhachHangLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NhanVienLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(HopDongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(KhuyenMaiLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TrangBiLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(HoaDonLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ChamCongLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(luongLb)
+                .addGap(30, 30, 30)
+                .addComponent(DangXuatLb)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,36 +282,100 @@ public class LichSuFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(405, 405, 405))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void TraCuuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TraCuuButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_TraCuuButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void KhachHangLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhachHangLbMouseClicked
+        dispose();
+        KhachHangFrame.main(currentUser);
+    }//GEN-LAST:event_KhachHangLbMouseClicked
+
+    private void NhanVienLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NhanVienLbMouseClicked
+        System.out.println(currentUser.toString());
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            NhanVienFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_NhanVienLbMouseClicked
+
+    private void ChamCongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChamCongLbMouseClicked
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            ChamCongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_ChamCongLbMouseClicked
+
+    private void DangXuatLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DangXuatLbMouseClicked
+        int a = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất không?", "Đăng xuất", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            dispose();
+            DangNhapFrame.main(null);
+        }
+    }//GEN-LAST:event_DangXuatLbMouseClicked
+
+    private void phongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_phongLbMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_phongLbMouseClicked
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void luongLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_luongLbMouseClicked
+        if (TrangChuDAO.KTLoaiNV(currentUser.getMaNV()) == 1) {
+            dispose();
+            LuongFrame.main(currentUser);
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này", "Thông báo", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_luongLbMouseClicked
 
+    private void TraCuuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TraCuuButtonMouseClicked
+      String input = this.NhapCCCDTextField.getText();
+        if (input.equals(""))
+            LoadDSLichSu();
+        else
+            TraCuuLichSu();
+    }//GEN-LAST:event_TraCuuButtonMouseClicked
+    private void TraCuuLichSu(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+         DefaultTableModel tblLichSu_Model = (DefaultTableModel) this.LichSuJTable.getModel();
+        String input = this.NhapCCCDTextField.getText();
+        tblLichSu_Model.setRowCount(0);
+        ArrayList<LichSuModel> DS_LichSu = new ArrayList<LichSuModel>();
+        DS_LichSu = LichSuDAO.timKH( input);
+        for (LichSuModel temp:DS_LichSu){
+            tblLichSu_Model.addRow(new Object[]{
+             temp.getMaKH(),
+            temp.getMaHD(),
+            temp.getTenKH(),
+            temp.gettGNhanPhong().format(formatter),
+            temp.gettGTraPhong().format(formatter),
+            temp.getTongTien()    
+            });
+        }
+        if (DS_LichSu.size()<=0){
+            JOptionPane.showMessageDialog(rootPane, "Thông tin không tồn tại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -232,17 +408,24 @@ public class LichSuFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ChamCongLb;
+    private javax.swing.JLabel DangXuatLb;
+    private javax.swing.JLabel HoaDonLb;
+    private javax.swing.JLabel HopDongLb;
+    private javax.swing.JLabel KhachHangLb;
+    private javax.swing.JLabel KhuyenMaiLb;
     private javax.swing.JTable LichSuJTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JPanel MenuPanel;
+    private javax.swing.JLabel NhanVienLb;
+    private javax.swing.JTextField NhapCCCDTextField;
+    private javax.swing.JButton TraCuuButton;
+    private javax.swing.JLabel TrangBiLb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel luongLb;
+    private javax.swing.JLabel phongLb;
     // End of variables declaration//GEN-END:variables
 }
