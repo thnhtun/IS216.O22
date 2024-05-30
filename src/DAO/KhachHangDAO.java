@@ -59,10 +59,10 @@ public class KhachHangDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        System.out.println(value);
         String sql = "DELETE KHACHHANG WHERE MAKH=?";
         PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
         ps.setInt(1, value);
+
         return ps.executeUpdate();
     }
     

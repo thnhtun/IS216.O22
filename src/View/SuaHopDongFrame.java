@@ -399,42 +399,25 @@ public class SuaHopDongFrame extends javax.swing.JFrame {
         int slNguoiLon = Integer.parseInt(slNL);
         String slTE = this.slTreEmjTextField.getText();
         int slTreEm = Integer.parseInt(slTE);
-        //java.sql.Date sqldate = new java.sql.Date(this.ngayLapHopDongjComboBox.getDate().getTime());
-        //Instant ins = sqldate.toInstant();
-        //LocalDateTime ngayLHD = ins.atZone(ZoneId.systemDefault()).toLocalDateTime();
         
         String tinhTrangHD = (String) this.tinhTrangHDjComboBox.getSelectedItem();
-        //String triGia = this.triGiaHDjTextField.getText();
-        
+
         
 
         try {
-            // Lấy thông tin cũ của khách hàng từ cơ sở dữ liệu
+            // Lấy thông tin cũ của hợp đồng từ cơ sở dữ liệu
             HopDongModel hopDongCu = HopDongDAO.getHDtheoMaHopDong(maHopDong);
 
-            // Kiểm tra và cập nhật thông tin mới
-            if (!tinhTrangHD.isEmpty()) {
-                hopDongCu.setTinhTrangHD(tinhTrangHD);
-            }
-            if (!slNL.isEmpty()) {
-                hopDongCu.setSoLuongNguoiLon(slNguoiLon);
-            }
-            if (!slTE.isEmpty()) {
-                hopDongCu.setSoLuongTreEm(slTreEm);
-            }
-
-
-
-            //hopDongCu.setNgayLapHopDong(ngayLHD);
+            hopDongCu.setSoLuongTreEm(slTreEm);
+            hopDongCu.setTinhTrangHD(tinhTrangHD);
+            hopDongCu.setSoLuongNguoiLon(slNguoiLon);
+ 
 
             // Thực hiện cập nhật trong cơ sở dữ liệu
             if (HopDongDAO.CapNhatHopDong(maHopDong, hopDongCu)) {
                 JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công!", "Thông báo", JOptionPane.PLAIN_MESSAGE);
-//                this.maKHjTextField.setText("");
                 this.slNguoiLonjTextField.setText("");
-                //this.triGiaHDjTextField.setText("");
                 this.slTreEmjTextField.setText("");
-                //this.ngayLapHopDongjComboBox.setCalendar(null);  
                 dispose();
                 HopDongFrame.main(currentUser);
             } else {

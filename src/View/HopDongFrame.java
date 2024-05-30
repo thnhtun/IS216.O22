@@ -244,6 +244,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         });
 
         MenuPanel.setBackground(new java.awt.Color(24, 24, 68));
+        MenuPanel.setPreferredSize(new java.awt.Dimension(200, 600));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(220, 220, 46));
@@ -519,7 +520,6 @@ public class HopDongFrame extends javax.swing.JFrame {
                 int maHopDong = (Integer) maHopDongObject;
                 dispose();
                 SuaHopDongFrame.main(currentUser, maHopDong);
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();

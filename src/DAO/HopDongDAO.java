@@ -21,7 +21,7 @@ public class HopDongDAO {
         try {
             
             // Tạo câu truy vấn 
-            String sql = "SELECT * FROM HOPDONGTHUEPHONG ORDER BY MaHopDong DESC";
+            String sql = "SELECT * FROM HOPDONG ORDER BY MaHopDong DESC";
             
             // Tạo đối tượng connection
             Connection conn = null;
@@ -62,7 +62,7 @@ public class HopDongDAO {
             con = JDBCUtil.getConnection();
             String sql = null;
             
-            sql = "SELECT * FROM HOPDONGTHUEPHONG WHERE TinhTrangHD = ?";            
+            sql = "SELECT * FROM HOPDONG WHERE TinhTrangHD = ?";            
 
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, textInput);
@@ -95,15 +95,15 @@ public class HopDongDAO {
             String sql = null;
             switch (option) {
                 case "Mã Hợp Đồng":
-                    sql = "SELECT * FROM HOPDONGTHUEPHONG WHERE LOWER(MAHOPDONG) LIKE LOWER(?)";
+                    sql = "SELECT * FROM HOPDONG WHERE LOWER(MAHOPDONG) LIKE LOWER(?)";
                     textInput = "%" + textInput + "%"; // Để tìm theo chuỗi con
                     break;
                 case "Mã KH":
-                    sql = "SELECT * FROM HOPDONGTHUEPHONG WHERE LOWER(MAKH) LIKE LOWER(?)";
+                    sql = "SELECT * FROM HOPDONG WHERE LOWER(MAKH) LIKE LOWER(?)";
                     textInput = "%" + textInput + "%"; // Để tìm theo chuỗi con
                     break;
                 case "Tình Trạng HĐ":
-                    sql = "SELECT * FROM HOPDONGTHUEPHONG WHERE LOWER(TINHTRANGHD) LIKE LOWER(?)";
+                    sql = "SELECT * FROM HOPDONG WHERE LOWER(TINHTRANGHD) LIKE LOWER(?)";
                     textInput = "%" + textInput + "%"; // Để tìm theo chuỗi con
                     break;
             }
@@ -139,7 +139,7 @@ public class HopDongDAO {
             ex.printStackTrace();
         }
 
-        String sql = "DELETE HOPDONGTHUEPHONG WHERE MAHOPDONG=?";
+        String sql = "DELETE HOPDONG WHERE MAHOPDONG=?";
         PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
         ps.setInt(1, maHopDong);
         
@@ -149,7 +149,7 @@ public class HopDongDAO {
     
     public static HopDongModel getHDtheoMaHopDong(int maHopDong) throws SQLException {
         // Tạo câu truy vấn 
-        String sql = "SELECT * FROM HOPDONGTHUEPHONG WHERE MaHopDong=?";
+        String sql = "SELECT * FROM HOPDONG WHERE MaHopDong=?";
 
         // Tạo đối tượng connection
         Connection conn = null;
@@ -187,22 +187,23 @@ public class HopDongDAO {
     }
     
     public static boolean CapNhatHopDong(int maHopDong, HopDongModel hopDong) throws SQLException {
-        Connection con = null;
-        try {
-            con = JDBCUtil.getConnection();
+        String sql = "UPDATE HOPDONG SET SONGUOILON = ?, SOTREEM = ?, TINHTRANGHD = ? WHERE MAHOPDONG = ?";
+
+        try (Connection con = JDBCUtil.getConnection(); 
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, hopDong.getSoLuongNguoiLon());
+            ps.setInt(2, hopDong.getSoLuongTreEm());
+            ps.setString(3, hopDong.getTinhTrangHD());
+            ps.setInt(4, maHopDong);
+
+            return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
         }
-        String sql = "UPDATE HOPDONGTHUEPHONG SET SONGUOILON = ?, SOTREEM = ?, NGAYLAPHOPDONG = ?, TINHTRANGHD = ? WHERE MAKH =?";
-        PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-        ps.setInt(1, hopDong.getSoLuongNguoiLon());
-        ps.setInt(2, hopDong.getSoLuongTreEm());
-        ps.setObject(3, hopDong.getNgayLapHopDong());
-        ps.setString(4, hopDong.getTinhTrangHD());
-        ps.setInt(5, maHopDong);
-        return ps.executeUpdate() > 0;
-    }
+}
+
 
     
 }
